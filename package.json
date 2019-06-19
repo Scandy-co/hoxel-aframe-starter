@@ -1,0 +1,10 @@
+{
+  "name": "hoxel-aframe",
+  "version": "1.0.0",
+  "description": "hoxel webvr arframe viewer project",
+  "main": "index.js",
+  "repository": "https://github.com/scandy-co/hoxel-aframe",
+  "author": "H. Cole Wiley <cole@scandy.co>",
+  "license": "MIT",
+  "private": true
+}
