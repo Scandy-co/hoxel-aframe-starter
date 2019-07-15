@@ -147,7 +147,6 @@ const callHoxelWorkers = (scvvJSON) => {
 
 AFRAME.registerComponent('scvv', {
   init() {
-    
     console.log('init scvv')
     const scene = document.querySelector('a-entity').sceneEl.object3D;
     setThreeScene(scene)

@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000
 
 module.exports = {
   entry: {
-    client: "./client.js"
+    client: "./client/index.js"
   },
   output: {
     path: path.resolve(__dirname, "./public"),
@@ -59,12 +59,13 @@ module.exports = {
   },
   plugins: [
     // Hot swap please!
-    // new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
 
     // Serves the html
     new HtmlWebPackPlugin({
       template: "./index.html",
-      filename: "./index.html"
+      filename: "./index.html",
+      inject: false
     }),
 
     // Define env variables
