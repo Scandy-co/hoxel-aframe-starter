@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "webpack-dev-server",
     "build": "NODE_ENV=production webpack"
   },
   "dependencies": {
@@ -39,6 +39,7 @@
     "webpack": "^4.26.1",
     "webpack-cli": "^3.3.4",
     "webpack-dev-middleware": "^3.4.0",
+    "webpack-dev-server": "^3.7.2",
     "webpack-hot-middleware": "^2.24.3",
     "webpack-obj-loader": "^1.0.4",
     "worker-loader": "^2.0.0"
