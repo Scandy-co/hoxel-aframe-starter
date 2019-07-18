@@ -6,11 +6,13 @@ const PORT = process.env.PORT || 3000
 
 module.exports = {
   entry: {
-    client: "./client/index.js"
+    client: "./client/index.js",
+    controls: "./client/controls.js",
+    grab: "./client/grab.js"
   },
   output: {
     path: path.resolve(__dirname, "./public"),
-    filename: "bundle.js",
+    // filename: "bundle.js",
     globalObject: "this"
   },
   mode: process.env.NODE_ENV || "development",
@@ -34,6 +36,16 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        test: /\.(obj|mtl|png)$/,
+        // include: [path.resolve(__dirname, 'src')],
+        use: [
+          {
+            loader: 'file-loader',
+            options: {name: '[name].[ext]'}
+          }
+        ]
+      },
       {
         test: /\.js$/,
         exclude: [/node_modules/, /lib/],

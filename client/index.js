@@ -1,14 +1,58 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-redeclare */
 
+const firebase = require('firebase')
+const auth = require('firebase/auth');
+const storage =  require('firebase/firestore');
+const database = require('firebase/database')
+
+const obj =  require('../public/cassete/CasseteTape.obj')
+const mtl =  require('../public/cassete/CasseteTape.mtl')
+const png = require('../public/cassete/CasseteTape_BaseColor.png')
+
 require('aframe')
+require('aframe-physics-system')
+require('aframe-teleport-controls')
 const _ = require('lodash');
+
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "AIzaSyCW2AbQkdg8SEBJeSTo_D0MlWaUuG6teD4",
+  authDomain: "hoxel-xr.firebaseapp.com",
+  databaseURL: "https://hoxel-xr.firebaseio.com",
+  projectId: "hoxel-xr",
+  storageBucket: "hoxel-xr.appspot.com",
+  messagingSenderId: "408632776811",
+  appId: "1:408632776811:web:edccebf388ca30f3"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// var fileRef = firebase.database().ref('ZBEq3iXDu7R277BVo6MCFbp6CK13/photos');
+// fileRef.on('value', function(snapshot) {
+//   const files = snapshot.val()
+//   console.log(files)
+//   let scene = document.getElementsByTagName('a-scene')[0]
+//   let list = Object.values(files)
+//   list.map((file, i) => {
+//     let box = document.createElement('a-obj-model')
+//     box.setAttribute('position', `-1 0.5 ${i * -3}`)
+//     box.setAttribute('rotation', `0 ${i * 5} 0`)
+//     box.setAttribute('color', '#ffffff')
+//     box.setAttribute('scale', '0.2 0.2 0.2')
+//     box.setAttribute('src', '#cassette-obj')
+//     box.setAttribute('mtl', '#cassette-mtl')
+    
+//     scene.appendChild(box)
+//   })
+
+// });
 
 const LoadSCVVWorker = require('worker-loader!./LoadSCVVWorker.min');
 const { playbackFrames, setBufferedFrames, setThreeScene, scvvMesh } = require('./scvvPlayback');
 const {downloadBin} = require('./utils');
-
-console.log('client/index')
+// Firebase App (the core Firebase SDK) is always required and must be listed first
+// Add the Firebase products that you want to use
 
 const ddFrameWorkers = [];
 let newFrames = [];
@@ -164,3 +208,4 @@ AFRAME.registerComponent('scvv', {
     });
   },
 });
+
