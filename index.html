@@ -1,60 +1,67 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1"
+    />
     <title>SCVV aframe demo</title>
     <!-- <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> -->
 
     <!-- <script type="text/javascript" src="/aframe.js"></script> -->
     <!-- <script type="text/javascript" src="/client.js"/></script> -->
-    <script type="text/javascript" src="/client.js"/></script>
-    <script type="text/javascript" src="/grab.js"/></script>
+    <script type="text/javascript" src="/client.js"></script>
+    <script type="text/javascript" src="/grab.js"></script>
+    <!-- Anything aframe dependent must be imported after client.js -->
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/components/sphere-collider.js"></script>
+    <script src="https://mixedreality.mozilla.org/ammo.js/builds/ammo.wasm.js"></script>
   </head>
   <body>
-    <a-scene stats physics="debug: true">
-      <a-entity teleport-controls vive-controls="hand: left" static-body="shape: sphere; sphereRadius: 0.02;" sphere-collider="objects: [dynamic-body];" grab></a-entity>
-      <a-entity teleport-controls vive-controls="hand: right" static-body="shape: sphere; sphereRadius: 0.02;" sphere-collider="objects: [dynamic-body];" grab></a-entity>
+    <a-scene environment>
       <a-assets>
-        <a-asset-item id="cassette-obj" src="CasseteTape.obj"></a-asset-item>
-        <a-asset-item id="cassette-mtl" src="./CasseteTape.mtl"></a-asset-item>
+        <audio id="click" src="./assets/audio/click.mp3"></audio>
       </a-assets>
-    
 
-      <!-- Camera -->
-      <a-entity camera look-controls></a-entity>
-    
-      <!-- Floor -->
-      <a-plane static-body></a-plane>
-    
-      <!-- Immovable box -->
-      <a-box  static-body position="1 0.5 -5" width="3" height="1" depth="1"  color="#00ff00"></a-box>
-    
-      <!-- Dynamic box -->
-      <a-box dynamic-body position="0 0.5 -5" width="1" height="1" depth="1" color="#0000ff"></a-box>
-      
-      <!-- HOXEL -->
-      <a-entity dynamic-body scvv></a-entity>
-      
-      <!-- ENVIRONMENT -->
-      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#4CC3D9"></a-sky>
-       -->
-      <!-- CONTROLS -->
-      <!-- <a-entity id="leftHand" oculus-touch-controls="hand: left; model: true;"></a-entity>
-      <a-entity id="rightHand" oculus-touch-controls="hand: right; model: true;"></a-entity> -->
-      <a-entity id="leftHand" hand-controls="left"></a-entity>
-      <a-entity id="rightHand" hand-controls="right"></a-entity>
+      <a-entity
+        teleport-controls
+        vive-controls="hand: left"
+        static-body="shape: sphere; sphereRadius: 0.02;"
+        sphere-collider="objects: [dynamic-body];"
+        grab
+      ></a-entity>
+      <a-entity
+        teleport-controls
+        vive-controls="hand: right"
+        static-body="shape: sphere; sphereRadius: 0.02;"
+        sphere-collider="objects: [dynamic-body];"
+        grab
+      ></a-entity>
 
-      <!-- CAMERA -->
-      <!-- <a-entity camera look-controls position="0 1.6 0">
-        <a-text id="txt" value="" position="0 0 -1" scale="0.4 0.4 0.4" align="center" color="#000000"></a-text>
-      </a-entity> -->
-      <!-- <a-camera>
-        <a-cursor></a-cursor>
-      </a-camera> -->
+      <!-- Have to call the handler component last to make sure sound source is attached to the entity -->
+      <a-entity
+        sound="src: #click; volume: .5"
+        gltf-model="#radio"
+        position="-2.210357318137207 0.3718644106385657 1.1893210652598343"
+        rotation="0 45 0"
+        scale="0.3 0.3 0.3"
+        audio-toggle="playing: false"
+      ></a-entity>
+
+      <a-plane
+        static-body
+        position="0 0 0"
+        rotation="-90 0 0"
+        width="30"
+        height="30"
+        color="black"
+        material="transparent: true; opacity: 0.8"
+      ></a-plane>
+
+      <a-entity id="container"></a-entity>
     </a-scene>
-    <script src="/controls.js"></script>
+    <script type="text/javascript" src="/controls.js"></script>
+    <script type="text/javascript" src="/balls.js"></script>
   </body>
 </html>

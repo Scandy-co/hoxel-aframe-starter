@@ -1,101 +1,157 @@
-
 const isHeadset = AFRAME.utils.device.checkHeadsetConnected();
 
-const rightHand = document.getElementById('rightHand')
-const leftHand = document.getElementById('leftHand')
-const txt = document.getElementById('txt')
+const rightHand = document.getElementById("rightHand");
+const leftHand = document.getElementById("leftHand");
+const txt = document.getElementById("txt");
 // aler)t(AFRAME.utils.device.checkHeadsetCon)nected())
 if (isHeadset) {
-  alert('headset!') 
+  alert("headset!");
 }
 
-rightHand.addEventListener('gripdown', event => {
-  console.log('The hand is closed into a fist without thumb raised.')
-  txt.setAttribute('value', 'The hand is closed into a fist without thumb raised.')
-})
+if (rightHand) {
+  rightHand.addEventListener("gripdown", event => {
+    console.log("The hand is closed into a fist without thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is closed into a fist without thumb raised."
+    );
+  });
 
-rightHand.addEventListener('gripup', event => {
-  console.log('The hand is no longer closed into a fist without thumb raised.')
-  txt.setAttribute('value', 'The hand is no longer closed into a fist without thumb raised.')
-})
-rightHand.addEventListener('pointup', event => {
-  console.log('The hand is touching or pressing the trigger only.')
-  txt.setAttribute('value', 'The hand is touching or pressing the trigger only.')
-})
-rightHand.addEventListener('pointdown', event => {
-  console.log('The hand is no longer touching or pressing the trigger only.')
-  txt.setAttribute('value', 'The hand is no longer touching or pressing the trigger only.')
-})
-rightHand.addEventListener('thumbup', event => {
-  console.log('The hand is closed into a fist with thumb raised.')
-  txt.setAttribute('value', 'The hand is closed into a fist with thumb raised.')
-})
-rightHand.addEventListener('thumbdown', event => {
-  console.log('The hand is no longer closed into a fist with thumb raised.')
-  txt.setAttribute('value', 'The hand is no longer closed into a fist with thumb raised.')
-})
-rightHand.addEventListener('pointingstart', event => {
-  console.log('The hand is pointing with index finger without thumb raised.')
-  txt.setAttribute('value', 'The hand is pointing with index finger without thumb raised.')
-})
-rightHand.addEventListener('pointingend', event => {
-  console.log('The hand is no longer pointing without thumb raised.')
-  txt.setAttribute('value', 'The hand is no longer pointing without thumb raised.')
-})
-rightHand.addEventListener('pistolstart', event => {
-  console.log('The hand is pointing with index finger and thumb raised.')
-  txt.setAttribute('value', 'The hand is pointing with index finger and thumb raised.')
-})
-rightHand.addEventListener('pistolend', event => {
-  console.log('The hand is no long')
-  txt.setAttribute('value', 'The hand is no long')
-})
+  rightHand.addEventListener("gripup", event => {
+    console.log(
+      "The hand is no longer closed into a fist without thumb raised."
+    );
+    txt.setAttribute(
+      "value",
+      "The hand is no longer closed into a fist without thumb raised."
+    );
+  });
+  rightHand.addEventListener("pointup", event => {
+    console.log("The hand is touching or pressing the trigger only.");
+    txt.setAttribute(
+      "value",
+      "The hand is touching or pressing the trigger only."
+    );
+  });
+  rightHand.addEventListener("pointdown", event => {
+    console.log("The hand is no longer touching or pressing the trigger only.");
+    txt.setAttribute(
+      "value",
+      "The hand is no longer touching or pressing the trigger only."
+    );
+  });
+  rightHand.addEventListener("thumbup", event => {
+    console.log("The hand is closed into a fist with thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is closed into a fist with thumb raised."
+    );
+  });
+  rightHand.addEventListener("thumbdown", event => {
+    console.log("The hand is no longer closed into a fist with thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is no longer closed into a fist with thumb raised."
+    );
+  });
+  rightHand.addEventListener("pointingstart", event => {
+    console.log("The hand is pointing with index finger without thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is pointing with index finger without thumb raised."
+    );
+  });
+  rightHand.addEventListener("pointingend", event => {
+    console.log("The hand is no longer pointing without thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is no longer pointing without thumb raised."
+    );
+  });
+  rightHand.addEventListener("pistolstart", event => {
+    console.log("The hand is pointing with index finger and thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is pointing with index finger and thumb raised."
+    );
+  });
+  rightHand.addEventListener("pistolend", event => {
+    console.log("The hand is no long");
+    txt.setAttribute("value", "The hand is no long");
+  });
+}
 
-
-
-
-leftHand.addEventListener('gripdown', event => {
-  console.log('The hand is closed into a fist without thumb raised.')
-  txt.setAttribute('value', 'The hand is closed into a fist without thumb raised.')
-})
-leftHand.addEventListener('gripup', event => {
-  console.log('The hand is no longer closed into a fist without thumb raised.')
-  txt.setAttribute('value', 'The hand is no longer closed into a fist without thumb raised.')
-})
-leftHand.addEventListener('pointup', event => {
-  console.log('The hand is touching or pressing the trigger only.')
-  txt.setAttribute('value', 'The hand is touching or pressing the trigger only.')
-})
-leftHand.addEventListener('pointdown', event => {
-  console.log('The hand is no longer touching or pressing the trigger only.')
-  txt.setAttribute('value', 'The hand is no longer touching or pressing the trigger only.')
-})
-leftHand.addEventListener('thumbup', event => {
-  console.log('The hand is closed into a fist with thumb raised.')
-  txt.setAttribute('value', 'The hand is closed into a fist with thumb raised.')
-})
-leftHand.addEventListener('thumbdown', event => {
-  console.log('The hand is no longer closed into a fist with thumb raised.')
-  txt.setAttribute('value', 'The hand is no longer closed into a fist with thumb raised.')
-})
-leftHand.addEventListener('pointingstart', event => {
-  console.log('The hand is pointing with index finger without thumb raised.')
-  txt.setAttribute('value', 'The hand is pointing with index finger without thumb raised.')
-})
-leftHand.addEventListener('pointingend', event => {
-  console.log('The hand is no longer pointing without thumb raised.')
-  txt.setAttribute('value', 'The hand is no longer pointing without thumb raised.')
-})
-leftHand.addEventListener('pistolstart', event => {
-  console.log('The hand is pointing with index finger and thumb raised.')
-  txt.setAttribute('value', 'The hand is pointing with index finger and thumb raised.')
-})
-leftHand.addEventListener('pistolend', event => {
-  console.log('The hand is no long')
-  txt.setAttribute('value', 'The hand is no long')
-})
-
-
+if (leftHand) {
+  leftHand.addEventListener("gripdown", event => {
+    console.log("The hand is closed into a fist without thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is closed into a fist without thumb raised."
+    );
+  });
+  leftHand.addEventListener("gripup", event => {
+    console.log(
+      "The hand is no longer closed into a fist without thumb raised."
+    );
+    txt.setAttribute(
+      "value",
+      "The hand is no longer closed into a fist without thumb raised."
+    );
+  });
+  leftHand.addEventListener("pointup", event => {
+    console.log("The hand is touching or pressing the trigger only.");
+    txt.setAttribute(
+      "value",
+      "The hand is touching or pressing the trigger only."
+    );
+  });
+  leftHand.addEventListener("pointdown", event => {
+    console.log("The hand is no longer touching or pressing the trigger only.");
+    txt.setAttribute(
+      "value",
+      "The hand is no longer touching or pressing the trigger only."
+    );
+  });
+  leftHand.addEventListener("thumbup", event => {
+    console.log("The hand is closed into a fist with thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is closed into a fist with thumb raised."
+    );
+  });
+  leftHand.addEventListener("thumbdown", event => {
+    console.log("The hand is no longer closed into a fist with thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is no longer closed into a fist with thumb raised."
+    );
+  });
+  leftHand.addEventListener("pointingstart", event => {
+    console.log("The hand is pointing with index finger without thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is pointing with index finger without thumb raised."
+    );
+  });
+  leftHand.addEventListener("pointingend", event => {
+    console.log("The hand is no longer pointing without thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is no longer pointing without thumb raised."
+    );
+  });
+  leftHand.addEventListener("pistolstart", event => {
+    console.log("The hand is pointing with index finger and thumb raised.");
+    txt.setAttribute(
+      "value",
+      "The hand is pointing with index finger and thumb raised."
+    );
+  });
+  leftHand.addEventListener("pistolend", event => {
+    console.log("The hand is no long");
+    txt.setAttribute("value", "The hand is no long");
+  });
+}
 
 // rightHand.addEventListener('triggerdown', (event) => {
 //   console.log('Trigger pressed.')
@@ -256,4 +312,4 @@ leftHand.addEventListener('pistolend', event => {
 // rightHand.addEventListener('surfacechange', (event) => {
 //   console.log('surfacechange')
 //   txt.setAttribute("value",'surfacechange');
-// })) 
+// }))

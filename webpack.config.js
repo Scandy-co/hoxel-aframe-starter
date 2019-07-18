@@ -8,7 +8,8 @@ module.exports = {
   entry: {
     client: "./client/index.js",
     controls: "./client/controls.js",
-    grab: "./client/grab.js"
+    grab: "./client/grab.js",
+    balls: "./client/balls.js"
   },
   output: {
     path: path.resolve(__dirname, "./public"),
@@ -37,8 +38,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(obj|mtl|png)$/,
-        // include: [path.resolve(__dirname, 'src')],
+        test: /\.(obj|mtl|png|mp3)$/,
+        // include: [path.resolve(__dirname, 'assets')],
         use: [
           {
             loader: 'file-loader',
