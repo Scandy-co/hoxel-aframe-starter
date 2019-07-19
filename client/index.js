@@ -5,7 +5,7 @@ require('aframe')
 const _ = require('lodash');
 
 const LoadSCVVWorker = require('worker-loader!./LoadSCVVWorker.min');
-const { playbackFrames, setBufferedFrames, setThreeScene, scvvMesh } = require('./scvvPlayback');
+const { playbackFrames, setBufferedFrames, setThreeScene, scvvMesh, setSCVVJSON } = require('./scvvPlayback');
 const {downloadBin} = require('./utils');
 
 const ddFrameWorkers = [];
@@ -153,12 +153,13 @@ AFRAME.registerComponent('scvv', {
     const group = document.querySelector('a-entity').object3D;
     group.add(scvvMesh)
     
-    const HOXEL_URL = "https://hoxel-streamed-001.s3.amazonaws.com/shrimp_boots/scvv_0-1-0_test_001"
+    const HOXEL_URL = "https://hoxel-streamed-001.s3.amazonaws.com/shrimp_boots/scvv_0-1-0_test_002"
     downloadBin(`${HOXEL_URL}/scvv.json`, 'json').then((json) => {
       const scvvJSON = {
         HOXEL_URL,
         ...json,
       };
+      setSCVVJSON(scvvJSON)
       callHoxelWorkers(scvvJSON);
     });
   },

@@ -18,6 +18,8 @@ const { downloadAudioBuffer } = require('./utils')
 // Array to keep buffered frames in
 let bufferedFrames = []
 
+let scvvJSON = {}
+
 // Audio context and source global vars
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
 if (!audioCtx) {
@@ -120,7 +122,9 @@ const getAudioBuffer = hoxelJSON =>
  */
 const playbackAudio = scvvJSON => {
   // Download the audio buffer
+  // console.log('playbackAudio')
   getAudioBuffer(scvvJSON).then(buffer => {
+    // console.log('getAudioBuffer downloaded')
     audioSource = audioCtx.createBufferSource()
     audioSource.buffer = buffer
     audioSource.loop = false
@@ -186,10 +190,10 @@ const playbackFrames = frameIdx => {
       vv_frame_ms = 0
 
       // Check if we have audio setup
-      if (audioCtx && audioSource) {
-        if (audioSwitch.checked) {
+      if (true || audioCtx && audioSource) {
+        if (true || audioSwitch.checked) {
           try {
-            // playbackAudio(scvvJSON)
+            playbackAudio(scvvJSON)
           } catch (e) {
             console.log('error playing audio:', e)
           }
@@ -250,3 +254,4 @@ module.exports.setThreeScene = _scene => {
   scene = _scene
 }
 module.exports.scvvMesh = scvvMesh
+module.exports.setSCVVJSON = (json) => scvvJSON = json
