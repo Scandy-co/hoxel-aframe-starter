@@ -30,7 +30,7 @@ let audioBuffer = null
 let audioSwitch = false
 
 // Minimum delay between frames. This is will change based on your client
-const min_delay_ms = 15
+const min_delay_ms = 5
 
 // Should we loop the scvv or just keep playing the last frame
 const loopSCVV = true
@@ -227,7 +227,7 @@ const playbackFrames = frameIdx => {
     delay_ms -= load_ms
   }
 
-  delay_ms += 15
+  // delay_ms += 15
 
   // If the delay_ms ends up to small JavaScript can choke itself
   delay_ms = delay_ms < min_delay_ms ? min_delay_ms : delay_ms
