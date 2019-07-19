@@ -21,7 +21,7 @@ module.exports = {
     fs: "empty"
   },
   devServer: {
-    // https: true,
+    https: true,
     port: PORT,
     host: "0.0.0.0",
     inline: true,

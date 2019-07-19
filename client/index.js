@@ -12,7 +12,10 @@ const png = require('../public/cassete/CasseteTape_BaseColor.png')
 
 require('aframe')
 require('aframe-physics-system')
-require('aframe-teleport-controls')
+require('aframe-state-component')
+require('aframe-extras')
+// require('aframe-motion-capture-components');
+
 const _ = require('lodash');
 
 // Your web app's Firebase configuration
@@ -26,27 +29,8 @@ var firebaseConfig = {
   appId: "1:408632776811:web:edccebf388ca30f3"
 };
 // Initialize Firebase
+
 firebase.initializeApp(firebaseConfig);
-
-// var fileRef = firebase.database().ref('ZBEq3iXDu7R277BVo6MCFbp6CK13/photos');
-// fileRef.on('value', function(snapshot) {
-//   const files = snapshot.val()
-//   console.log(files)
-//   let scene = document.getElementsByTagName('a-scene')[0]
-//   let list = Object.values(files)
-//   list.map((file, i) => {
-//     let box = document.createElement('a-obj-model')
-//     box.setAttribute('position', `-1 0.5 ${i * -3}`)
-//     box.setAttribute('rotation', `0 ${i * 5} 0`)
-//     box.setAttribute('color', '#ffffff')
-//     box.setAttribute('scale', '0.2 0.2 0.2')
-//     box.setAttribute('src', '#cassette-obj')
-//     box.setAttribute('mtl', '#cassette-mtl')
-    
-//     scene.appendChild(box)
-//   })
-
-// });
 
 const LoadSCVVWorker = require('worker-loader!./LoadSCVVWorker.min');
 const { playbackFrames, setBufferedFrames, setThreeScene, scvvMesh } = require('./scvvPlayback');
@@ -209,3 +193,30 @@ AFRAME.registerComponent('scvv', {
   },
 });
 
+
+var fileRef = firebase.database().ref('ZBEq3iXDu7R277BVo6MCFbp6CK13/audios');
+fileRef.on('value', function(snapshot) {
+  const files = snapshot.val()
+  console.log(files)
+  let scene = document.getElementsByTagName('a-scene')[0]
+  let list = Object.values(files)
+  list.map((file, i) => {
+    let box = document.createElement('a-sound')
+    box.setAttribute('position', `-1 0.5 ${i * -1}`)
+    box.setAttribute('rotation', `0 ${i * 5} 0`)
+    box.setAttribute('mixin', `cube`)
+    box.setAttribute('color', '#ffffff')
+    // console.log(file)
+    // box.setAttribute('sound', `src: url(${file.downloadURL}});`)
+    box.setAttribute('src', `src: url(${file.downloadURL});`)
+    // box.setAttribute('type', "audio/caf")
+    box.setAttribute('autoplay', `true`)
+
+    // box.setAttribute
+
+    // box.setAttribute('scale', '0.2 0.2 0.2')
+    // box.setAttribute('src', '#cassette-obj')
+    // box.setAttribute('mtl', '#cassette-mtl')    
+    scene.appendChild(box)
+  })
+});

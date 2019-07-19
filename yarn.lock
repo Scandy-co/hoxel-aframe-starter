@@ -1219,12 +1219,24 @@ acorn@^6.0.7, acorn@^6.2.0:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-6.2.0.tgz#67f0da2fc339d6cfb5d6fb244fd449f33cd8bbe3"
   integrity sha512-8oe72N3WPMjA+2zVG71Ia0nXZ8DpQH+QyyHO+p06jT8eg8FGG3FbcUIi8KziHlAfheJQZeoqbvq1mQSQHXKYLw==
 
+aframe-extras@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/aframe-extras/-/aframe-extras-6.0.0.tgz#23e4f263acfa0f815f2aedf7202548203075712b"
+  integrity sha512-5kzNWFW9Qm47ANAf9gh7QkB60JGANt7A8ot3Axgloobdt8N+rp+OvnaNXViIihNQ04y2SV1qXICzTOjTrrzBgQ==
+  dependencies:
+    three-pathfinding "^0.7.0"
+
 aframe-lerp-component@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/aframe-lerp-component/-/aframe-lerp-component-1.1.0.tgz#dc8c12c53698770c30f25eef8873e34a4e79c765"
   integrity sha1-3IwSxTaYdwww8l7viHPjSk55x2U=
   dependencies:
     almost-equal "^1.1.0"
+
+aframe-motion-capture-components@^0.2.7:
+  version "0.2.7"
+  resolved "https://registry.yarnpkg.com/aframe-motion-capture-components/-/aframe-motion-capture-components-0.2.7.tgz#94ca684b1b0138f8c5d8e71d15bf62ebbf137efa"
+  integrity sha1-lMpoSxsBOPjF2OcdFb9i678Tfvo=
 
 aframe-physics-system@^4.0.0:
   version "4.0.0"
@@ -1236,6 +1248,13 @@ aframe-physics-system@^4.0.0:
     three-to-ammo "github:infinitelee/three-to-ammo"
     three-to-cannon "^1.3.0"
     webworkify "^1.4.0"
+
+aframe-state-component@^6.8.0:
+  version "6.8.0"
+  resolved "https://registry.yarnpkg.com/aframe-state-component/-/aframe-state-component-6.8.0.tgz#43a8a13d0ff150ac194e957475257ccce73246ff"
+  integrity sha512-8iPKMwd5an8hcBrvLdNsH2xMBgu5qdlXXBEmO0TjuQKielyAji41w0r8189WG1gkiYGXR0sPdo+Q/fvbPzLXOQ==
+  dependencies:
+    debug "^2.6.9"
 
 aframe-teleport-controls@^0.3.1:
   version "0.3.1"
@@ -3215,20 +3234,6 @@ expand-tilde@^2.0.0, expand-tilde@^2.0.2:
   dependencies:
     homedir-polyfill "^1.0.1"
 
-expo-av@^5.0.2:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/expo-av/-/expo-av-5.0.2.tgz#8f308fc14d7be8b3bc79d6f8dc6c270da07f94d4"
-  integrity sha512-InvEYDinIv5enZR1HM6oIKFrvFoIsXuxAKcbZmgtqeuRzeJpOLJgzEJ5XlqPDfCM9/RX2Fhv4b2mSQsL20T4IQ==
-  dependencies:
-    lodash "^4.17.11"
-
-expo-font@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/expo-font/-/expo-font-5.0.1.tgz#b3174134efd0ce3382db3a6c282147cba8bee203"
-  integrity sha512-fa/z31lLi1ut6IGTf9/Kvw9KAlwSGQaBkuunuqjrW2ephqiXlHTeOOsaqKMirtmiqgsKOJysdlYUH1Aw03Y2bg==
-  dependencies:
-    fontfaceobserver "^2.1.0"
-
 express@^4.10.7, express@^4.17.1:
   version "4.17.1"
   resolved "https://registry.yarnpkg.com/express/-/express-4.17.1.tgz#4491fc38605cf51f8629d39c2b5d026f98a4c134"
@@ -3514,11 +3519,6 @@ follow-redirects@^1.0.0:
   integrity sha512-m/pZQy4Gj287eNy94nivy5wchN3Kp+Q5WgUPNy5lJSZ3sgkVKSYV/ZChMAQVIgx1SqfZ2zBZtPA2YlXIWxxJOQ==
   dependencies:
     debug "^3.2.6"
-
-fontfaceobserver@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/fontfaceobserver/-/fontfaceobserver-2.1.0.tgz#e2705d293e2c585a6531c2a722905657317a2991"
-  integrity sha512-ReOsO2F66jUa0jmv2nlM/s1MiutJx/srhAe2+TE8dJCMi02ZZOcCTxTCQFr3Yet+uODUtnr4Mewg+tNQ+4V1Ng==
 
 for-each@^0.3.3:
   version "0.3.3"
@@ -7034,6 +7034,11 @@ three-buffer-vertex-data@^1.0.0:
   integrity sha1-zyKOeEJ2ZYhLlhpMq+H4XtOfgrE=
   dependencies:
     flatten-vertex-data "^1.0.0"
+
+three-pathfinding@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/three-pathfinding/-/three-pathfinding-0.7.0.tgz#bf64ec409bee6e7d8e19be96c7b40ebd7ef6f10d"
+  integrity sha512-UwWvzgio1UFe81n5jKHNzB4B+AG3wfZ54OKp7bTb1MHuC3cy6RTtr0dbbiPQQoqxzr+DRArR2DUwQSEknw5+nw==
 
 "three-to-ammo@github:infinitelee/three-to-ammo":
   version "0.1.0"
