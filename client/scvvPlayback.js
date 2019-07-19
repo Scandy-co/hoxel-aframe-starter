@@ -28,7 +28,7 @@ let audioBuffer = null
 let audioSwitch = false
 
 // Minimum delay between frames. This is will change based on your client
-const min_delay_ms = 5
+const min_delay_ms = 15
 
 // Should we loop the scvv or just keep playing the last frame
 const loopSCVV = true
@@ -159,6 +159,7 @@ const displaySCVVFrame = frame => {
     scvvMesh.material.map = scvvTexture
     // This works for a hoxel recorded at medium size
     scvvMesh.position.set(0, 1.7, -2.0)
+    scvvMesh.rotation.set(0, Math.PI, 0)
     // only add it once
     // scene.add(scvvMesh)
   }
@@ -221,6 +222,8 @@ const playbackFrames = frameIdx => {
     // Remove the load time from the delay
     delay_ms -= load_ms
   }
+
+  delay_ms += 15
 
   // If the delay_ms ends up to small JavaScript can choke itself
   delay_ms = delay_ms < min_delay_ms ? min_delay_ms : delay_ms

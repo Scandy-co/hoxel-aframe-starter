@@ -8,8 +8,6 @@ const LoadSCVVWorker = require('worker-loader!./LoadSCVVWorker.min');
 const { playbackFrames, setBufferedFrames, setThreeScene, scvvMesh } = require('./scvvPlayback');
 const {downloadBin} = require('./utils');
 
-console.log('client/index')
-
 const ddFrameWorkers = [];
 let newFrames = [];
 let bufferedFrames = [];
@@ -19,24 +17,24 @@ const numWorkers = 1;
 const maxBufferedCount = 500;
 
 const scandyToThreeMat = new THREE.Matrix4()
-scandyToThreeMat.set(
-  -0.0,
-  -1.0,
-  0.0,
-  0.0,
-  -1.0,
-  0.0,
-  0.0,
-  0.0,
-  0.0,
-  0.0,
-  -1.0,
-  0.0,
-  0.0,
-  0.0,
-  0.0,
-  1
-)
+// scandyToThreeMat.set(
+//   -0.0,
+//   -1.0,
+//   0.0,
+//   0.0,
+//   -1.0,
+//   0.0,
+//   0.0,
+//   0.0,
+//   0.0,
+//   0.0,
+//   -1.0,
+//   0.0,
+//   0.0,
+//   0.0,
+//   0.0,
+//   1
+// )
 
 let playbackStarted = false
 const startPlayback = () => {
@@ -155,9 +153,10 @@ AFRAME.registerComponent('scvv', {
     const group = document.querySelector('a-entity').object3D;
     group.add(scvvMesh)
     
-    downloadBin('/hoxelCardHelloWorld/scvv_animation.json', 'json').then((json) => {
+    const HOXEL_URL = "https://hoxel-streamed-001.s3.amazonaws.com/shrimp_boots/scvv_0-1-0_test_001"
+    downloadBin(`${HOXEL_URL}/scvv.json`, 'json').then((json) => {
       const scvvJSON = {
-        HOXEL_URL: '/hoxelCardHelloWorld',
+        HOXEL_URL,
         ...json,
       };
       callHoxelWorkers(scvvJSON);
