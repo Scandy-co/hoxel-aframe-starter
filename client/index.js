@@ -153,7 +153,7 @@ AFRAME.registerComponent('scvv', {
     const group = document.querySelector('a-entity').object3D;
     group.add(scvvMesh)
     
-    const HOXEL_URL = "https://hoxel-streamed-001.s3.amazonaws.com/shrimp_boots/scvv_0-1-0_test_003"
+    const HOXEL_URL = "https://hoxel-streamed-001.s3.amazonaws.com/shrimp_boots/scvv_0-1-0_test_005"
     downloadBin(`${HOXEL_URL}/scvv.json`, 'json').then((json) => {
       const scvvJSON = {
         HOXEL_URL,

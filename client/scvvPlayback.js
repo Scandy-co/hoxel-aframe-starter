@@ -123,12 +123,7 @@ const getAudioBuffer = hoxelJSON =>
 const playbackAudio = scvvJSON => {
   // Download the audio buffer
   // console.log('playbackAudio')
-  getAudioBuffer(scvvJSON).then(buffer => {
-    // console.log('getAudioBuffer downloaded')
-    audioSource = audioCtx.createBufferSource()
-    audioSource.buffer = buffer
-    audioSource.loop = false
-    audioSource.connect(audioCtx.destination)
+  const play = () => {
     const start_sec = vv_frame_ms * 1e-3
     const offset_msec = scvvJSON.audio_us_offset * 1e-3
     if (offset_msec > 0) {
@@ -138,6 +133,18 @@ const playbackAudio = scvvJSON => {
     } else {
       audioSource.start(0, start_sec + offset_msec * -1e-3)
     }
+  }
+  if( audioSource ) {
+    audioSource.stop()
+    play()
+  }
+  getAudioBuffer(scvvJSON).then(buffer => {
+    // console.log('getAudioBuffer downloaded')
+    audioSource = audioCtx.createBufferSource()
+    audioSource.buffer = buffer
+    audioSource.loop = false
+    audioSource.connect(audioCtx.destination)
+    play()
   })
 }
 
@@ -224,10 +231,8 @@ const playbackFrames = frameIdx => {
     // console.log('loosing playback')
   } else {
     // Remove the load time from the delay
-    delay_ms -= load_ms
+    // delay_ms -= load_ms
   }
-
-  // delay_ms += 15
 
   // If the delay_ms ends up to small JavaScript can choke itself
   delay_ms = delay_ms < min_delay_ms ? min_delay_ms : delay_ms
