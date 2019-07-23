@@ -194,23 +194,23 @@ AFRAME.registerComponent('scvv', {
 });
 
 
-var fileRef = firebase.database().ref('ZBEq3iXDu7R277BVo6MCFbp6CK13/audios');
+var fileRef = firebase.database().ref('ZBEq3iXDu7R277BVo6MCFbp6CK13/photos');
 fileRef.on('value', function(snapshot) {
   const files = snapshot.val()
   console.log(files)
   let scene = document.getElementsByTagName('a-scene')[0]
   let list = Object.values(files)
   list.map((file, i) => {
-    let box = document.createElement('a-sound')
+    let box = document.createElement('a-image')
     box.setAttribute('position', `-1 0.5 ${i * -1}`)
     box.setAttribute('rotation', `0 ${i * 5} 0`)
     box.setAttribute('mixin', `cube`)
     box.setAttribute('color', '#ffffff')
-    // console.log(file)
+    // console.log(file)box.setAttribute('src', `src: url(${file.downloadURL});`)
     // box.setAttribute('sound', `src: url(${file.downloadURL}});`)
-    box.setAttribute('src', `src: url(${file.downloadURL});`)
+    box.setAttribute('src', `${file.downloadURL}.jpg`)
     // box.setAttribute('type', "audio/caf")
-    box.setAttribute('autoplay', `true`)
+    // box.setAttribute('autoplay', `true`)
 
     // box.setAttribute
 
