@@ -169,10 +169,11 @@ AFRAME.registerComponent('scvv', {
 
     this.displaySCVVFrame = frame => {
       if (!!frame.mesh_geometry && !!frame.texture_blob) {
-        this.geometry = frame.mesh_geometry
-        if( !this.material.map ) {
-          this.material.map = this.scvvTexture
+        this.mesh.geometry = frame.mesh_geometry
+        if( !this.mesh.material.map ) {
+          this.mesh.material.map = this.scvvTexture
           this.scvvTexture.needsUpdate = true
+          this.mesh.material.map.needsUpdate = true
         }
         this.scvvTextureImage.src = frame.texture_blob
       }
