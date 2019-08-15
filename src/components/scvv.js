@@ -1,5 +1,5 @@
 /* global AFRAME, THREE */
-
+const _ = require('lodash')
 const LoadSCVVWorker = require('worker-loader!../workers/LoadSCVVWorker.min');
 const { playbackFrames, setBufferedFrames, setThreeScene, scvvMesh } = require('./scvvPlayback');
 const {downloadBin} = require('./utils');
@@ -152,9 +152,10 @@ AFRAME.registerComponent('scvv', {
     scvvMesh.scale.set(5, 5, 5)
     group.add(scvvMesh)
     
-    downloadBin('/hoxelCardHelloWorld/scvv_animation.json', 'json').then((json) => {
+    const HOXEL_URL = "https://hoxel-streamed-001.s3.amazonaws.com/shrimp_boots/scvv_0-1-0_test_003"
+    downloadBin(`${HOXEL_URL}/scvv.json`, 'json').then((json) => {
       const scvvJSON = {
-        HOXEL_URL: '/hoxelCardHelloWorld',
+        HOXEL_URL,
         ...json,
       };
       callHoxelWorkers(scvvJSON);
