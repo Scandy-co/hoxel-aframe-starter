@@ -1,6 +1,7 @@
 .DS_Store
 .cache
 *.sw*
+*.log
 build
 firefox/
 tests/coverage/
@@ -10,3 +11,4 @@ node_modules
 npm-debug.log*
 package-lock.json
 public/
+.firebase
