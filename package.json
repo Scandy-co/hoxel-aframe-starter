@@ -10,6 +10,7 @@
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack",
     "deploy": "ghpages -p .ghpages && rm -rf .ghpages",
+    "fbdeploy": "yarn build && firebase deploy",
     "lint": "semistandard -v | snazzy",
     "lint:fix": "semistandard --fix",
     "predeploy": "npm run build && shx mkdir -p .ghpages && cp -r index.html assets build .ghpages",
