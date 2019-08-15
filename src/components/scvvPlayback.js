@@ -46,14 +46,14 @@ const scvvTexture = new THREE.Texture(scvvTextureImage)
 scvvTextureImage.onload = () => {
   scvvTexture.needsUpdate = true
 }
-const scvvMaterial = new THREE.MeshBasicMaterial({
+let scvvMaterial = new THREE.MeshBasicMaterial({
   color: 0xffffff,
   opacity: 0.92,
   transparent: true,
   side: THREE.DoubleSide
 })
-const scvvBufferGeometry = new THREE.BufferGeometry()
-const scvvMesh = new THREE.Mesh(scvvBufferGeometry, scvvMaterial)
+let scvvBufferGeometry = new THREE.BufferGeometry()
+let scvvMesh = new THREE.Mesh(scvvBufferGeometry, scvvMaterial)
 
 // three.js objects
 let scene = THREE.Object3D
@@ -245,5 +245,11 @@ module.exports.setBufferedFrames = newBuffer => {
 }
 module.exports.setThreeScene = _scene => {
   scene = _scene
+}
+module.exports.setSCVVMesh = mesh => {
+  scvvMesh = mesh
+  scvvMesh.material = scvvMaterial
+  scvvMesh.material.map = scvvTexture
+  scvvMesh.geometry = scvvBufferGeometry
 }
 module.exports.scvvMesh = scvvMesh

@@ -14,7 +14,7 @@
  * @param {*} responseType ['arraybuffer', 'blob', 'json', 'text']
  * @param {*} timeout How many milliseconds wait until timeout on request
  */
-const downloadBin = (url, responseType='arraybuffer', timeout = 10000) =>
+const downloadBin = (url, responseType='arraybuffer', timeout = 60e3) =>
   new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest()
     /* NOTE: you want to do this, but you can't.. its forbidden
@@ -35,8 +35,13 @@ const downloadBin = (url, responseType='arraybuffer', timeout = 10000) =>
         reject(new Error(`No buffer`))
       }
     }
-    xhr.onerror = () => reject(new Error('error loading frame asset'))
-    xhr.ontimeout = () => reject(new Error('Connection timeout'))
+    xhr.onerror = function() {
+      reject(new TypeError(xhr.responseText || 'Network request failed'))
+    }
+
+    xhr.ontimeout = function() {
+      reject(new TypeError(xhr.responseText || 'Network request failed'))
+    }
     xhr.send(null)
   })
 module.exports.downloadBin = downloadBin
