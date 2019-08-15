@@ -30,7 +30,7 @@ const startPlayback = () => {
  * @param {*} frame
  */
 const addFrameBuffer = (frame) => {
-  console.log("addFrameBuffer", frame.mesh_path)
+  // console.log("addFrameBuffer", frame.mesh_path)
   let geometry = new THREE.BufferGeometry()
   // copy over all the attributes
   for (var prop in frame.mesh_geometry) {
