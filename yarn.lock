@@ -1357,6 +1357,11 @@ aframe-particle-system-component@^1.1.3:
   resolved "https://registry.yarnpkg.com/aframe-particle-system-component/-/aframe-particle-system-component-1.1.3.tgz#9d05732fab223e8c4392d20ae47bb29fa97067e9"
   integrity sha512-G1qmdre8mrbLTw67jNUr79IRFXxL+Rt++LFC1enhNHFoiyqgvcLsSWJLYhoVdEpTyvM39b1VMM7RjivpW4oBsg==
 
+aframe-physics-extras@^0.1.3:
+  version "0.1.3"
+  resolved "https://registry.yarnpkg.com/aframe-physics-extras/-/aframe-physics-extras-0.1.3.tgz#803e2164fb96c0a80f2d1a81458f3277f262b130"
+  integrity sha512-wTzGXQK+C8CobIvgBY9CXl2Bb5H+STjlJLnqo2p47M2pHAMjsML9Kb2XWIb73quFKoChqJpUn2kZKxodAKzt/g==
+
 aframe-physics-system@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/aframe-physics-system/-/aframe-physics-system-4.0.0.tgz#e4683486829e1aeea783dba3c747f26845bbd1b0"
