@@ -16,10 +16,6 @@ require('aframe-extras')
 
 require('./scene.html');
 
-const LoadSCVVWorker = require('worker-loader!./LoadSCVVWorker.min');
-const { playbackFrames, setBufferedFrames, setThreeScene, scvvMesh } = require('./scvvPlayback');
-const {downloadBin} = require('./utils');
-
 // const _ = require('lodash');
 
 // Your web app's Firebase configuration
@@ -35,9 +31,6 @@ const {downloadBin} = require('./utils');
 // Initialize Firebase
 
 // firebase.initializeApp(firebaseConfig);
-
-// Firebase App (the core Firebase SDK) is always required and must be listed first
-// Add the Firebase products that you want to use
 
 
 AFRAME.registerComponent("modify-materials", {
