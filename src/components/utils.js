@@ -36,11 +36,11 @@ const downloadBin = (url, responseType='arraybuffer', timeout = 60e3) =>
       }
     }
     xhr.onerror = function() {
-      reject(new TypeError(xhr.responseText || 'Network request failed'))
+      reject(new Error('Network request failed'))
     }
 
     xhr.ontimeout = function() {
-      reject(new TypeError(xhr.responseText || 'Network request failed'))
+      reject(new Error('Network request timeout'))
     }
     xhr.send(null)
   })
