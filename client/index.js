@@ -206,12 +206,8 @@ AFRAME.registerComponent("modify-materials", {
       const obj = this.el.getObject3D("mesh");
       // Go over the submeshes and modify materials we want.
       obj.traverse(node => {
-        if (node.material) {
-          let sum = Object.values(node.material.color).reduce(
-            (a, b) => a + b,
-            0
-          );
-          if (sum != 3) {
+        if (node.material && node.material.name == 'mat23') {
+          debugger
             var fileRef = firebase.database().ref('ZBEq3iXDu7R277BVo6MCFbp6CK13/photos');
             fileRef.once('value', function(snapshot) {
               const files = snapshot.val()
@@ -222,7 +218,7 @@ AFRAME.registerComponent("modify-materials", {
                 textureLoader.crossOrigin = "Anonymous"
                 const myTexture = textureLoader.load(file.downloadURL)
                 node.material.map = myTexture
-                node.material.color.set("red");
+                // node.material.color.set("red");
                 // let box = document.createElement('a-image')
                 // box.setAttribute('position', `-1 0.5 ${i * -1}`)
                 // box.setAttribute('rotation', `0 ${i * 5} 0`)
@@ -243,7 +239,6 @@ AFRAME.registerComponent("modify-materials", {
               })
             });
           }
-        }
       });
     });
   }
