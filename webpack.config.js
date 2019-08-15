@@ -1,9 +1,10 @@
-var MinifyPlugin = require('babel-minify-webpack-plugin');
-var fs = require('fs');
-var ip = require('ip');
-var path = require('path');
-var webpack = require('webpack');
-const HtmlWebPackPlugin = require("html-webpack-plugin");
+var MinifyPlugin = require('babel-minify-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+var fs = require('fs')
+var ip = require('ip')
+var path = require('path')
+var webpack = require('webpack')
+const HtmlWebPackPlugin = require('html-webpack-plugin')
 
 const PORT = process.env.PORT || 3001
 
@@ -13,15 +14,27 @@ PLUGINS = [
   new webpack.HotModuleReplacementPlugin(),
 
   // // Serves the html
-  // new HtmlWebPackPlugin({
-  //   template: "./index.html",
-  //   filename: "./index.html",
-  //   inject: false
-  // }),
+  new CopyWebpackPlugin([
+    {
+      //Note:- No wildcard is specified hence will copy all files and folders
+      from: 'assets', //Will resolve to RepoDir/src/assets
+      to: 'assets' //Copies all files from above dest to dist/assets
+    },
+    {
+      from: 'public', //Will resolve to RepoDir/src/assets
+      to: '' //Copies all files from above dest to dist/assets
+    },
+    {
+      from: '*.html',
+      to: ''
+    }
+  ]),
 
   // Define env variables
   new webpack.DefinePlugin({
-    'process.env.HOXEL_ASSET_URL': JSON.stringify(process.env.HOXEL_ASSET_URL) || `http://localhost:${PORT}/streamed`
+    'process.env.HOXEL_ASSET_URL':
+      JSON.stringify(process.env.HOXEL_ASSET_URL) ||
+      `http://localhost:${PORT}/streamed`
   }),
 
   // Handle the WebWorker loading
@@ -29,8 +42,8 @@ PLUGINS = [
     options: {
       worker: {
         output: {
-          filename: "hash.worker.js",
-          chunkFilename: "[id].hash.worker.js",
+          filename: 'hash.worker.js',
+          chunkFilename: '[id].hash.worker.js',
           globalObject: 'this'
         }
       }
@@ -47,11 +60,11 @@ module.exports = {
     build: './src/index.js'
   },
   output: {
-    path: __dirname,
-    filename: 'build/[name].js',
+    path: `${__dirname}/build`,
+    filename: '[name].js',
     globalObject: 'this'
   },
-  mode: process.env.NODE_ENV || "development",
+  mode: process.env.NODE_ENV || 'development',
   // watch: true,
   // watchOptions: {
   //   ignored: ['node_modules', 'dist', 'public'],
@@ -62,60 +75,61 @@ module.exports = {
   plugins: PLUGINS,
   module: {
     rules: [
-        {
-          test: /\.js/,
-          exclude: /(node_modules)/,
-          use: ['babel-loader', 'aframe-super-hot-loader']
-        },
-        {
-          test: /\.html/,
-          exclude: /(node_modules)/,
-          use: [
-            'aframe-super-hot-html-loader',
-            {
-              loader: 'super-nunjucks-loader',
-              options: {
-                globals: {
-                  HOST: ip.address(),
-                  IS_PRODUCTION: process.env.NODE_ENV === 'production'
-                },
-                path: process.env.NUNJUCKS_PATH || path.join(__dirname, 'src')
-              }
-            },
-            {
-             loader: 'html-require-loader',
-              options: {
-                root: path.resolve(__dirname, 'src')
-              }
+      {
+        test: /\.js/,
+        exclude: /(node_modules)/,
+        use: ['babel-loader', 'aframe-super-hot-loader']
+      },
+      {
+        test: /\.html/,
+        exclude: /(node_modules)/,
+        use: [
+          'aframe-super-hot-html-loader',
+          {
+            loader: 'super-nunjucks-loader',
+            options: {
+              globals: {
+                HOST: ip.address(),
+                IS_PRODUCTION: process.env.NODE_ENV === 'production'
+              },
+              path: process.env.NUNJUCKS_PATH || path.join(__dirname, 'src')
             }
-          ]
-        },
-        {
-          test: /\.glsl/,
-          exclude: /(node_modules)/,
-          loader: 'webpack-glsl-loader'
-        },
-        {
-          test: /\.css$/,
-          exclude: /(node_modules)/,
-          use: ['style-loader', 'css-loader']
-        },
-        {
-          test: /\.png|\.jpg/,
-          exclude: /(node_modules)/,
-          use: ['url-loader']
-        },
-      { // Handle the Draco web assembly code
+          },
+          {
+            loader: 'html-require-loader',
+            options: {
+              root: path.resolve(__dirname, 'src')
+            }
+          }
+        ]
+      },
+      {
+        test: /\.glsl/,
+        exclude: /(node_modules)/,
+        loader: 'webpack-glsl-loader'
+      },
+      {
+        test: /\.css$/,
+        exclude: /(node_modules)/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.png|\.jpg/,
+        exclude: /(node_modules)/,
+        use: ['url-loader']
+      },
+      {
+        // Handle the Draco web assembly code
         test: /\.(wasmbin)$/,
         use: [
           {
             loader: 'url-loader',
             options: {
               limit: 340000
-            },
-          },
-        ],
-      },
-    ],
-  },
-};
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
