@@ -18,6 +18,8 @@ const { downloadAudioBuffer } = require('./utils')
 // Array to keep buffered frames in
 let bufferedFrames = []
 
+let scvvJSON = {}
+
 // Audio context and source global vars
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
 if (!audioCtx) {
@@ -120,11 +122,8 @@ const getAudioBuffer = hoxelJSON =>
  */
 const playbackAudio = scvvJSON => {
   // Download the audio buffer
-  getAudioBuffer(scvvJSON).then(buffer => {
-    audioSource = audioCtx.createBufferSource()
-    audioSource.buffer = buffer
-    audioSource.loop = false
-    audioSource.connect(audioCtx.destination)
+  // console.log('playbackAudio')
+  const play = () => {
     const start_sec = vv_frame_ms * 1e-3
     const offset_msec = scvvJSON.audio_us_offset * 1e-3
     if (offset_msec > 0) {
@@ -134,6 +133,18 @@ const playbackAudio = scvvJSON => {
     } else {
       audioSource.start(0, start_sec + offset_msec * -1e-3)
     }
+  }
+  if( audioSource ) {
+    audioSource.stop()
+    play()
+  }
+  getAudioBuffer(scvvJSON).then(buffer => {
+    // console.log('getAudioBuffer downloaded')
+    audioSource = audioCtx.createBufferSource()
+    audioSource.buffer = buffer
+    audioSource.loop = false
+    audioSource.connect(audioCtx.destination)
+    play()
   })
 }
 
@@ -158,7 +169,8 @@ const displaySCVVFrame = frame => {
     // since
     scvvMesh.material.map = scvvTexture
     // This works for a hoxel recorded at medium size
-    scvvMesh.position.set(0, 1.7, -2.0)
+    scvvMesh.position.set(0, 1.7, 0)
+    scvvMesh.rotation.set(0, Math.PI, 0)
     // only add it once
     // scene.add(scvvMesh)
   }
@@ -185,10 +197,10 @@ const playbackFrames = frameIdx => {
       vv_frame_ms = 0
 
       // Check if we have audio setup
-      if (audioCtx && audioSource) {
-        if (audioSwitch.checked) {
+      if (true || audioCtx && audioSource) {
+        if (true || audioSwitch.checked) {
           try {
-            // playbackAudio(scvvJSON)
+            playbackAudio(scvvJSON)
           } catch (e) {
             console.log('error playing audio:', e)
           }
@@ -219,7 +231,7 @@ const playbackFrames = frameIdx => {
     // console.log('loosing playback')
   } else {
     // Remove the load time from the delay
-    delay_ms -= load_ms
+    // delay_ms -= load_ms
   }
 
   // If the delay_ms ends up to small JavaScript can choke itself
@@ -247,3 +259,4 @@ module.exports.setThreeScene = _scene => {
   scene = _scene
 }
 module.exports.scvvMesh = scvvMesh
+module.exports.setSCVVJSON = (json) => scvvJSON = json
