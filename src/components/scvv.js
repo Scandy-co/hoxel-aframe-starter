@@ -17,40 +17,49 @@ AFRAME.registerComponent('scvv', {
   multiple: true,
 
   init() {
-    const {
-      playbackFrames,
-      setBufferedFrames,
-      setThreeScene,
-      setSCVVMesh,
-    } = require('./scvvPlayback')
+    this.ddFrameWorkers = []
+    this.newFrames = []
+    this.bufferedFrames = []
+    this.badFrames = []
+    this.seenFrames = []
+    this.numWorkers = 2
+    this.maxBufferedCount = 500
+    this.scandyToThreeMat = new THREE.Matrix4()
+    this.playbackStarted = false
+    this.frameIdx = 0
+    this.deltas = 0
 
     const HOXEL_URL = this.data.scvvUrl
     console.log(`init scvv: ${HOXEL_URL}`)
-    var data = this.data;
-    var el = this.el;
-    const scene = document.querySelector('a-entity').sceneEl.object3D
-    setThreeScene(scene)
-    const group = document.getElementById('my-file').object3D
-    this.mesh = new THREE.Mesh(this.geometry, this.material);
-    el.setObject3D('mesh', this.mesh);
-    this.mesh.scale.set(5, 5, 5)
-    setSCVVMesh(this.mesh)
+    var data = this.data
+    var el = this.el
 
-    let ddFrameWorkers = []
-    let newFrames = []
-    let bufferedFrames = []
-    let badFrames = []
-    let seenFrames = []
-    let numWorkers = 2
-    let maxBufferedCount = 500
-    let scandyToThreeMat = new THREE.Matrix4()
-    let playbackStarted = false
+    // THREEJS objects to playback the SCVV frames
+    this.scvvTextureImage = new Image()
+    this.scvvTexture = new THREE.Texture(this.scvvTextureImage)
+    // this.scvvTexture = new THREE.Texture()
+    // Bind the onload of the image to always update the texture
+    this.scvvTextureImage.onload = () => {
+      this.scvvTexture.needsUpdate = true
+    }
+    this.material = new THREE.MeshBasicMaterial({
+      color: 0xffffff,
+      // color: 0x00ff00,
+      opacity: 0.92,
+      transparent: true,
+      // map: this.scvvTexture,
+      side: THREE.DoubleSide,
+    })
+    this.geometry = new THREE.BufferGeometry()
+    this.mesh = el.getObject3D('mesh')
+    this.mesh = new THREE.Mesh(this.geometry, this.material)
+    el.setObject3D('mesh', this.mesh)
 
     this.startPlayback = () => {
-      if (!playbackStarted) {
-        playbackStarted = true
+      if (!this.playbackStarted) {
+        this.playbackStarted = true
         console.log('playbackFrames(0)', this.scvvJSON.HOXEL_URL)
-        playbackFrames(0)
+        // playbackFrames(0)
       }
     }
 
@@ -80,22 +89,23 @@ AFRAME.registerComponent('scvv', {
         new THREE.BufferAttribute(frame.mesh_geometry.indices, 1)
       )
       // Fix the orientation for THREE from ScandyCore
-      geometry.applyMatrix(scandyToThreeMat)
+      geometry.applyMatrix(this.scandyToThreeMat)
+      geometry.computeBoundingSphere()
       // Fix the orientation for THREE from ScandyCore
       frame.mesh_geometry = geometry
       // Merge all the mesh frames together keeping them in order
-      const newBuffered = bufferedFrames.slice()
+      const newBuffered = this.newFrames.slice()
       newBuffered.push(frame)
 
       // Sort by mesh_  path and only keep the most recent
       let start = 0
-      if (newBuffered.length > maxBufferedCount) {
-        start = newBuffered.length - maxBufferedCount
+      if (newBuffered.length > this.maxBufferedCount) {
+        start = newBuffered.length - this.maxBufferedCount
       }
-      bufferedFrames = _.sortBy(newBuffered, ['mesh_path']).slice(start)
-      setBufferedFrames(bufferedFrames)
+      this.newFrames = _.sortBy(newBuffered, ['mesh_path']).slice(start)
+      this.bufferedFrames = this.newFrames.slice()
 
-      if (bufferedFrames.length > newFrames.length * 0.2) {
+      if (this.newFrames.length > this.newFrames.length * 0.2) {
         this.startPlayback()
       }
     }
@@ -109,7 +119,7 @@ AFRAME.registerComponent('scvv', {
         const { error, dict } = msg.data
         if (error) {
           console.log('error with ddFrameWorker', error)
-          badFrames[dict.frame.mesh_path] = dict.frame
+          this.badFrames[dict.frame.mesh_path] = dict.frame
           // throttledLoadHoxel();
           // alert(`error: ${error}`)
         } else if (dict && dict.frame) {
@@ -119,38 +129,52 @@ AFRAME.registerComponent('scvv', {
         }
       }
 
-      if (ddFrameWorkers.length < numWorkers) {
-        for (var w = 0; w < numWorkers; w++) {
+      if (this.ddFrameWorkers.length < this.numWorkers) {
+        for (var w = 0; w < this.numWorkers; w++) {
           const worker = new LoadSCVVWorker()
           worker.onmessage = gotMessage
-          ddFrameWorkers.push(worker)
+          this.ddFrameWorkers.push(worker)
         }
       }
 
-      newFrames = []
+      this.newFrames = []
       _.forEach(scvvJSON.frames, frame => {
         // Check to see if we've already got this frame
-        if (seenFrames[frame.mesh_path] || badFrames[frame.mesh_path]) {
+        if (
+          this.seenFrames[frame.mesh_path] ||
+          this.badFrames[frame.mesh_path]
+        ) {
           // We don't need to get this frame, we've already seen it
         } else {
           // Delete the frame from the buffer since we don't need it anymore
-          newFrames.push(frame)
+          this.newFrames.push(frame)
         }
       })
       // Only ever keep the latest 200 buffered frames
       // Now we can get all the unbuffered frames
 
-      scvvJSON.frames = newFrames
+      scvvJSON.frames = this.newFrames
 
-      _.forEach(scvvJSON.frames, f => (seenFrames[f.mesh_path] = true))
-      console.log(`new frames to buffer: ${newFrames.length}`)
-      console.log(`seenFrames: ${seenFrames.length}`)
+      _.forEach(scvvJSON.frames, f => (this.seenFrames[f.mesh_path] = true))
+      console.log(`new frames to buffer: ${this.newFrames.length}`)
+      console.log(`seenFrames: ${this.seenFrames.length}`)
 
       // Use multiple download workers so we can download faster
-      for (var w = 0; w < ddFrameWorkers.length; w++) {
-        const worker = ddFrameWorkers[w]
+      for (var w = 0; w < this.ddFrameWorkers.length; w++) {
+        const worker = this.ddFrameWorkers[w]
         const offset = w
-        worker.postMessage({ scvvJSON, offset, numWorkers })
+        worker.postMessage({ scvvJSON, offset, numWorkers: this.numWorkers })
+      }
+    }
+
+    this.displaySCVVFrame = frame => {
+      if (!!frame.mesh_geometry && !!frame.texture_blob) {
+        this.geometry = frame.mesh_geometry
+        if( !this.material.map ) {
+          this.material.map = this.scvvTexture
+          this.scvvTexture.needsUpdate = true
+        }
+        this.scvvTextureImage.src = frame.texture_blob
       }
     }
 
@@ -166,5 +190,37 @@ AFRAME.registerComponent('scvv', {
       .catch(err => {
         console.log('error downloading json', err)
       })
+  },
+
+  update() {
+    console.log('updating', this)
+  },
+
+  remove() {
+    console.log('removing', this)
+    this.mesh = null
+    this.geometry = null
+    this.material = null
+    this.bufferedFrames = []
+  },
+
+  tick(time, timeDelta) {
+    this.deltas += timeDelta
+    if (!!this.bufferedFrames && this.bufferedFrames.length > 0) {
+      // const delay_ms = Math.floor(
+      //   this.bufferedFrames[this.frameIdx].delay_us * 1e-3
+      // ) - 10
+      if (this.deltas >= 20) {
+        this.displaySCVVFrame(this.bufferedFrames[this.frameIdx])
+        this.deltas = 0
+
+        // Check to make sure the requested frameIdx is in the buffer
+        if (this.frameIdx < this.bufferedFrames.length - 1) {
+          this.frameIdx++
+        } else {
+          this.frameIdx = 0
+        }
+      }
+    }
   }
 })
