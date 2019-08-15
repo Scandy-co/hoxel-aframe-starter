@@ -2,7 +2,7 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3001
 
 module.exports = {
   entry: {
@@ -21,7 +21,7 @@ module.exports = {
     fs: "empty"
   },
   devServer: {
-    https: true,
+    https: false,
     port: PORT,
     host: "0.0.0.0",
     inline: true,
