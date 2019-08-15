@@ -15,24 +15,6 @@ const numWorkers = 1;
 const maxBufferedCount = 500;
 
 const scandyToThreeMat = new THREE.Matrix4()
-scandyToThreeMat.set(
-  -0.0,
-  -1.0,
-  0.0,
-  0.0,
-  -1.0,
-  0.0,
-  0.0,
-  0.0,
-  0.0,
-  0.0,
-  -1.0,
-  0.0,
-  0.0,
-  0.0,
-  0.0,
-  1
-)
 
 let playbackStarted = false
 const startPlayback = () => {
@@ -48,7 +30,7 @@ const startPlayback = () => {
  * @param {*} frame
  */
 const addFrameBuffer = (frame) => {
-  // console.log("addFrameBuffer", frame.mesh_path)
+  console.log("addFrameBuffer", frame.mesh_path)
   let geometry = new THREE.BufferGeometry()
   // copy over all the attributes
   for (var prop in frame.mesh_geometry) {
@@ -130,8 +112,8 @@ const callHoxelWorkers = (scvvJSON) => {
   scvvJSON.frames = newFrames;
 
   _.forEach(scvvJSON.frames, f => (seenFrames[f.mesh_path] = true));
-  // console.log(`new frames to buffer: ${newFrames.length}`)
-  // console.log(`seenFrames: ${seenFrames.length}`)
+  console.log(`new frames to buffer: ${newFrames.length}`)
+  console.log(`seenFrames: ${seenFrames.length}`)
 
   // Use multiple download workers so we can download faster
   for (var w = 0; w < ddFrameWorkers.length; w++) {
