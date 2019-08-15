@@ -194,11 +194,12 @@ AFRAME.registerComponent('scvv', {
   },
 
   update() {
-    console.log('updating', this)
+    // console.log('updating')
   },
 
   remove() {
-    console.log('removing', this)
+    // console.log('removing')
+    this.el.removeObject3D('mesh');
     this.mesh = null
     this.geometry = null
     this.material = null
