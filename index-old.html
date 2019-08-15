@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,shrink-to-fit=no,user-scalable=no,maximum-scale=1"
+    />
+    <title>SCVV aframe demo</title>
+    <!-- <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> -->
+
+    <!-- <script type="text/javascript" src="/aframe.js"></script> -->
+    <!-- <script type="text/javascript" src="/client.js"/></script> -->
+    <script type="text/javascript" src="/client.js"></script>
+    <!-- <script type="text/javascript" src="/grab.js"></script> -->
+    <!-- Anything aframe dependent must be imported after client.js -->
+    <!-- <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v4.2.0/dist/components/sphere-collider.js"></script> -->
+    <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
+    <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.min.js"></script>
+    <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
+
+    <script>
+      //color randomizer
+      AFRAME.registerComponent("color-randomizer", {
+        play: function() {
+          this.el.addEventListener("drag-drop", function(evt) {
+            evt.detail.dropped.setAttribute(
+              "material",
+              "color",
+              "#" + ((Math.random() * 0xffffff) << 0).toString(16)
+            );
+            // color randomizer credit: http://stackoverflow.com/questions/1484506/random-color-generator-in-javascript#comment6801353_5365036
+          });
+        }
+      });
+      // turn controller's physics presence on only while button held down
+      AFRAME.registerComponent("phase-shift", {
+        init: function() {
+          var el = this.el;
+          el.addEventListener("gripdown", function() {
+            el.setAttribute("collision-filter", { collisionForces: true });
+          });
+          el.addEventListener("gripup", function() {
+            el.setAttribute("collision-filter", { collisionForces: false });
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <a-scene
+      environment="preset: tron; shadow: true;"
+      renderer="antialias: true"
+      physics="debug: true; gravity: -9.8"
+    >
+      <a-assets>
+        <a-asset-item id="polaroid-obj" src="./polaroid.obj"></a-asset-item>
+        <a-asset-item id="polaroid-mtl" src="./polaroid.mtl"></a-asset-item>
+        <a-mixin
+          id="cube"
+          geometry="primitive: box; width: 0.33; height: 0.33; depth: 0.33"
+          hoverable
+          grabbable
+          stretchable
+          draggable
+          sound="src: url(ticklelaugh.mp3); on: click"
+          event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
+          event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
+          dynamic-body
+          shadow
+        ></a-mixin>
+        <a-mixin
+          id="transformer"
+          color-randomizer
+          droppable
+          static-body
+          collision-filter="collisionForces: false"
+          event-set__dragon="_event: dragover-start; material.wireframe: true"
+          event-set__dragoff="_event: dragover-end; material.wireframe: false"
+          geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
+        ></a-mixin>
+        <a-mixin
+          id="touch"
+          physics-collider
+          phase-shift
+          collision-filter="collisionForces: false"
+          static-body="shape: sphere; sphereRadius: 0.02"
+          super-hands="colliderEvent: collisions;
+                       colliderEventProperty: els;
+                       colliderEndEvent: collisions;
+                       colliderEndEventProperty: clearedEls;"
+        >
+        </a-mixin>
+      </a-assets>
+      <!-- PLAYER -->
+      <a-entity>
+        <a-camera positon="0 1.6 0"></a-camera>
+        <a-entity
+          id="rhand"
+          mixin="touch"
+          vive-controls="hand: right"
+          oculus-touch-controls="hand: right"
+          windows-motion-controls="hand: right"
+        >
+        </a-entity>
+        <a-entity
+          id="lhand"
+          mixin="touch"
+          vive-controls="hand: left"
+          oculus-touch-controls="hand: left"
+          windows-motion-controls="hand: left"
+        >
+        </a-entity>
+      </a-entity>
+      <!-- <a-entity
+        class="transformer"
+        mixin="transformer"
+        position="0 1.6 -1"
+        material="src:#colortransform"
+        shadow
+      ></a-entity> -->
+
+      <a-entity
+        id="my-file"
+        dynamic-body="shape: cylinder; cylinderAxis: y; mass: 5"
+        hoverable
+        grabbable
+        stretchable
+        draggable
+        event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
+        event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
+        shadows
+        scvv
+        position="2 2 -1"
+      >
+      </a-entity>
+
+      <a-entity
+        geometry="primitive: box"
+        material="color: #3d3d3d"
+        position="0 1.2 -3"
+        rotation=""
+        static-body
+        shadow
+        scale="3 0.2 2"
+      ></a-entity>
+
+      <!-- Cylinder. -->
+      <a-entity
+        geometry="primitive: cylinder; radius: 0.5; height: 1.5"
+        material="color: #999999"
+        position="0 0.21003 -3"
+        static-body
+        shadow=""
+        scale="1 1.2 1"
+      ></a-entity>
+
+      <!-- Sphere. -->
+      <!-- <a-entity
+        geometry="primitive: sphere; radius: 1.25"
+        material="color: #EF2D5E"
+        position="0 1.25 -6"
+        static-body
+        shadow
+      ></a-entity> -->
+
+      <a-entity
+        dynamic-body
+        hoverable
+        grabbable
+        draggable
+        modify-materials
+        obj-model="obj: #polaroid-obj; mtl: #polaroid-mtl"
+        rotation="0 30"
+        scale="0.3 0.3 0.3"
+        position="-0.7 1.5 -2.480"
+      ></a-entity>
+      <!-- ground collider keeps objects from falling -->
+      <a-box
+        static-body
+        width="100"
+        height="0.001"
+        depth="100"
+        visible="false"
+      ></a-box>
+      <a-entity id="container"></a-entity>
+    </a-scene>
+  </body>
+</html>

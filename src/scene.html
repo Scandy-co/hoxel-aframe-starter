@@ -1,0 +1,38 @@
+<a-scene environment="preset: default; seed: 123; shadowSize: 5">
+  <require path="templates/assets.html"></require>
+
+  <!-- Box. -->
+  <a-entity
+    geometry="primitive: box"
+    material="color: #3d3d3d"
+    position="0 1.2 -3"
+    rotation=""
+    shadow
+    scale="3 0.2 2"
+  ></a-entity>
+
+  <!-- Cylinder. -->
+  <a-entity
+    geometry="primitive: cylinder; radius: 0.5; height: 1.5"
+    material="color: #999999"
+    position="0 0.21003 -3"
+    shadow=""
+    scale="1 1.2 1"
+  ></a-entity>
+
+  <!-- Sphere. -->
+  <a-entity
+    geometry="primitive: sphere; radius: 1.25"
+    material="color: #EF2D5E"
+    position="0 1.25 -6"
+    shadow
+  ></a-entity>
+
+  <a-entity
+    modify-materials
+    obj-model="obj: #polaroid-obj; mtl: #polaroid-mtl"
+    rotation="0 30"
+    scale="0.3 0.3 0.3"
+    position="-0.7 1.344 -2.480"
+  ></a-entity>
+</a-scene>
