@@ -1,6 +1,11 @@
-<!-- PLAYER -->
-<a-entity>
-  <a-camera positon="0 4.4 0"></a-camera>
+<a-entity position="0 2.1 10">
+  <a-camera>
+    <a-entity
+      geometry="primitive: plane; height: 0.2; width: 0.2"
+      position="0 0 -1"
+      material="color: gray; opacity: 0.5"
+    ></a-entity
+  ></a-camera>
   <a-entity
     id="rhand"
     mixin="touch"

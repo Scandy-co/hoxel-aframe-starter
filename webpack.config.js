@@ -9,7 +9,10 @@ const HtmlWebPackPlugin = require('html-webpack-plugin')
 const PORT = process.env.PORT || 3001
 
 PLUGINS = [
-  new webpack.EnvironmentPlugin(['NODE_ENV']),
+  new webpack.EnvironmentPlugin({
+    NODE_ENV: 'development', // use 'development' unless process.env.NODE_ENV is defined
+    DEBUG: false
+  }),
   // Hot swap please!
   new webpack.HotModuleReplacementPlugin(),
 
