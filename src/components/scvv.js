@@ -1,7 +1,7 @@
 /* global AFRAME, THREE */
 const _ = require('lodash')
 const LoadSCVVWorker = require('worker-loader!../workers/LoadSCVVWorker.min')
-const { downloadBin } = require('./utils')
+const { downloadBin, downloadAudioBuffer } = require('./utils')
 // Firebase App (the core Firebase SDK) is always required and must be listed first
 // Add the Firebase products that you want to use
 
@@ -28,6 +28,59 @@ AFRAME.registerComponent('scvv', {
     this.playbackStarted = false
     this.frameIdx = 0
     this.deltas = 0
+    this.vv_frame_ms = 0
+
+    // Audio context and source global vars
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+    if (!audioCtx) {
+      console.log('No AudioContext available')
+    }
+    // let audioSource = null
+    let audioBuffer = null
+    let audioSwitch = false
+    let audioStarted = false
+    /**
+    * Store the audio buffer for reuse
+    */
+    const getAudioBuffer = hoxelJSON =>
+      new Promise((resolve, reject) => {
+        if (audioBuffer) {
+          resolve(audioBuffer)
+        } else {
+          let src = `${hoxelJSON.HOXEL_URL}/${hoxelJSON.audio}`
+          downloadAudioBuffer(audioCtx, src)
+            .then(buffer => {
+              audioBuffer = buffer
+              resolve(audioBuffer)
+            })
+            .catch(reject)
+        }
+      })
+
+    /**
+    * Starts playing audio given a scvv json file
+    * @param {*} scvvJSON the scvvJSON object with SCVV info
+    */
+    this.playbackAudio = scvvJSON => {
+      // Download the audio buffer
+      getAudioBuffer(scvvJSON).then(buffer => {
+        let audioSource = audioCtx.createBufferSource()
+        audioSource.buffer = buffer
+        audioSource.loop = false
+        audioSource.connect(audioCtx.destination)
+        const start_sec = this.vv_frame_ms * 1e-3
+        const offset_msec = scvvJSON.audio_us_offset * 1e-3
+        if (offset_msec > 0) {
+          setTimeout(() => {
+            audioSource.start(0, start_sec)
+            audioStarted = true
+          }, offset_msec)
+        } else {
+          audioSource.start(0, start_sec + offset_msec * -1e-3)
+          audioStarted = true
+        }
+      })
+    }
 
     const HOXEL_URL = this.data.scvvUrl
     console.log(`init scvv: ${HOXEL_URL}`)
@@ -51,7 +104,6 @@ AFRAME.registerComponent('scvv', {
       side: THREE.DoubleSide,
     })
     this.geometry = new THREE.BufferGeometry()
-    this.mesh = el.getObject3D('mesh')
     this.mesh = new THREE.Mesh(this.geometry, this.material)
     el.setObject3D('mesh', this.mesh)
 
@@ -186,6 +238,7 @@ AFRAME.registerComponent('scvv', {
           HOXEL_URL,
           ...json
         }
+        console.log('got json', HOXEL_URL)
         this.callHoxelWorkers(this.scvvJSON)
       })
       .catch(err => {
@@ -209,11 +262,17 @@ AFRAME.registerComponent('scvv', {
   tick(time, timeDelta) {
     this.deltas += timeDelta
     if (!!this.bufferedFrames && this.bufferedFrames.length > 0) {
+
+      // Start the audio on the first frame
+      if( this.frameIdx == 0 ){
+        this.playbackAudio(this.scvvJSON)
+      }
       // const delay_ms = Math.floor(
       //   this.bufferedFrames[this.frameIdx].delay_us * 1e-3
       // ) - 10
       if (this.deltas >= 20) {
         this.displaySCVVFrame(this.bufferedFrames[this.frameIdx])
+        this.vv_frame_ms += this.deltas
         this.deltas = 0
 
         // Check to make sure the requested frameIdx is in the buffer

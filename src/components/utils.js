@@ -35,14 +35,23 @@ const downloadBin = (url, responseType='arraybuffer', timeout = 60e3) =>
         reject(new Error(`No buffer`))
       }
     }
+
+    xhr.onprogress = () => {
+      console.log(`LOADING: ${url}`, xhr.status);
+    };
+
     xhr.onerror = function() {
-      reject(new Error('Network request failed'))
+      if( responseType == 'json' ){
+        reject(new Error(`Network request failed: ${JSON.stringify(xhr.responseJSON)}`))
+      } else {
+        reject(new Error('Network request failed'))
+      }
     }
 
     xhr.ontimeout = function() {
       reject(new Error('Network request timeout'))
     }
-    xhr.send(null)
+    xhr.send()
   })
 module.exports.downloadBin = downloadBin
 
