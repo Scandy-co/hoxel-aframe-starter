@@ -2,9 +2,6 @@
   environment="preset: default; seed: 123; shadowSize: 5"
   physics="debug: true"
 >
-  <a-assets>
-    <audio id="other-file" src="//d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/scvv_0-1-0_test_003" preload="auto"></audio>
-  </a-assets>
   <require path="templates/assets.html"></require>
   <require path="templates/mixins.html"></require>
   <require path="templates/player.html"></require>
@@ -44,9 +41,10 @@
     event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
     id="other-file"
     geometry="primitive: plane" material="color: blue"
-    scvv2="src: #other-file; autoplay:true"
-    rotation="0 0 0"
-    position="2 1.3 -1.3"
+    scvv="src: //d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/scvv_0-1-0_test_003; autoplay:true"
+    rotation="0 180 0"
+    scale="3 3 3"
+    position="1 1.3 -1.3"
   >
   </a-entity>
 
