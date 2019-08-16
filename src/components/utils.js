@@ -37,7 +37,7 @@ const downloadBin = (url, responseType='arraybuffer', timeout = 60e3) =>
     }
 
     xhr.onprogress = () => {
-      console.log(`LOADING: ${url}`, xhr.status);
+      // console.log(`LOADING: ${url}`, xhr.status);
     };
 
     xhr.onerror = function() {
