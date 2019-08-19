@@ -2,7 +2,7 @@
 const firebase = require('firebase')
 // const auth = require('firebase/auth');
 // const storage =  require('firebase/firestore');
-// const database = require('firebase/database')
+const database = require('firebase/database')
 var firebaseConfig = {
   apiKey: "AIzaSyCW2AbQkdg8SEBJeSTo_D0MlWaUuG6teD4",
   authDomain: "hoxel-xr.firebaseapp.com",

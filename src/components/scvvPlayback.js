@@ -19,13 +19,13 @@ const { downloadAudioBuffer } = require('./utils')
 let bufferedFrames = []
 
 // Audio context and source global vars
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
-if (!audioCtx) {
-  console.log('No AudioContext available')
-}
-let audioSource = null
-let audioBuffer = null
-let audioSwitch = false
+// const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+// if (!audioCtx) {
+//   console.log('No AudioContext available')
+// }
+// let audioSource = null
+// let audioBuffer = null
+// let audioSwitch = false
 
 // Minimum delay between frames. This is will change based on your client
 const min_delay_ms = 5

@@ -13,12 +13,13 @@
     position="0 0 0"
     gltf-model="#lowpolyscene"
   ></a-entity>
-  <a-sound
+  <!-- <a-sound
     src="src: url(/assets/audio/room_tone.wav)"
     autoplay="true"
     loop="true"
     positional="false"
-  ></a-sound>
+  ></a-sound> -->
+
   <!-- Sphere. -->
   <a-entity
     geometry="primitive: sphere; radius: 1.25"
@@ -29,7 +30,7 @@
 
   <!-- Hoxel -->
   <!-- <a-entity
-    dynamic-body="shape: cylinder; cylinderAxis: y; mass: 5"
+    dynamic-body="shape: cylinder; cylinderAxis: y; mass: 500"
     hoverable
     grabbable
     stretchable
@@ -37,28 +38,31 @@
     event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
     event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
     id="my-file"
-    scvv="scvvUrl: //d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/scvv_0-1-0_test_003"
-    scale="10 10 10"
+    scvv="src: //d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/scvv_0-1-0_test_005"
+    scale="5 5 5"
     rotation="0 180 0"
-    position="-2 2 -1.3"
+    position="-1.2 2.1 -0.55"
   >
   </a-entity> -->
 
   <a-entity
-    dynamic-body="shape: cylinder; cylinderAxis: y; mass: 5"
-    hoverable
-    grabbable
-    stretchable
-    draggable
-    event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
-    event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
-    id="other-file"
-    scvv="scvvUrl: //d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/spooked-george"
-    scale="8 8 8"
+    id="george"
+    scvv="src: //d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/spooked-george"
+    scale="3 3 3"
     rotation="0 180 -90"
-    position="3 7.2 0.3"
+    position="-0.641 2.508 -0.043"
   >
   </a-entity>
+  <!-- <a-entity
+    id="cole2"
+    geometry="primitive: plane"
+    material="color: blue"
+    scvv="src: //d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/scvv_0-1-0_test_003"
+    rotation="0 180 0"
+    scale="3 3 3"
+    position="1 1.9 -0.7"
+  ></a-entity> -->
+
   <a-entity
     animation-mixer=""
     id="troll"
@@ -73,7 +77,7 @@
   <!-- <a-entity
     geometry="primitive: box"
     material="color: #3d3d3d"
-    position="0 0.75 -3"
+    position="0 0.75 -0.5"
     rotation=""
     static-body
     shadow
@@ -84,7 +88,7 @@
   <!-- <a-entity
     geometry="primitive: cylinder; radius: 0.5; height: 1.2"
     material="color: #999999"
-    position="0 0.21003 -3"
+    position="0 0.21003 -0.5"
     static-body
     shadow=""
     scale="1 0.5 1"
@@ -100,8 +104,9 @@
     obj-model="obj: #polaroid-obj; mtl: #polaroid-mtl"
     rotation="0 35"
     scale="0.2 0.2 0.2"
-    position="-0.7 1.6 -2.480"
-  ></a-entity> -->
+    position="-0.2 1.6 -0.480"
+  ></a-entity>
+  -->
   <!-- Polaroid -->
   <!-- <a-entity
     dynamic-body
