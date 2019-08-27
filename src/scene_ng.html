@@ -3,14 +3,14 @@
 
   <!-- Left Hand Pallette -->
   <a-entity oculus-touch-controls="hand: left">
-    <a-entity mixin="box"></a-entity>
+    <a-entity mixin="pallette"></a-entity>
   </a-entity>
 
   <!-- Right Hand Raycaster -->
   <a-entity
     id="rightHand"
     laser-controls="hand: right"
-    raycaster="objects: [mixin='box']"
+    raycaster="objects: .palletteSide"
     line="color: #118A7E"
   ></a-entity>
 
@@ -18,12 +18,11 @@
 
   <a-entity position="0 0 -10">
     <a-mixin
-      id="box"
-      geometry="primitive: box"
-      material="color: #FAFAFA; offset:  [object Object];  repeat:  [object Object];  ambientOcclusionMapIntensity:  0;  ambientOcclusionTextureOffset:  [object Object];  ambientOcclusionTextureRepeat:  [object Object];  displacementTextureOffset:  [object Object];  displacementTextureRepeat:  [object Object];  height:  100;  metalness:  0.2;  metalnessTextureOffset:  [object Object];  metalnessTextureRepeat:  [object Object];  normalScale:  [object Object];  normalTextureOffset:  [object Object];  normalTextureRepeat:  [object Object];  roughnessTextureOffset:  [object Object];  roughnessTextureRepeat:  [object Object]"
-      rotation="0 0 -35"
-      scale="0.2 0.2 0.2"
-      intersect-color-change
+      id="pallette"
+      geometry="primitive: box; buffer: false"
+      rotation="0 0 0"
+      scale="0.1 0.1 0.1"
+      multi-sided-pallette
       shadow="cast: true; receive: false"
     ></a-mixin>
 
