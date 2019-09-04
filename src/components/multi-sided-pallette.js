@@ -13,33 +13,57 @@ AFRAME.registerComponent("multi-sided-pallette", {
       face.setAttribute("height", 2);
 
       if (i === 0) {
-        face.setAttribute("rotation", "0 " + "0" + " 0");
-        face.setAttribute("position", "0 0 1");
+        face.setAttribute("rotation", "-90 " + "0" + " 0");
+        face.setAttribute("position", "0 1 0");
+        face.setAttribute(
+          "text",
+          "value: 1; width: 6; height: 2; lineHeight: 2; align: center; wrapCount: 15"
+        );
       }
 
       if (i === 1) {
-        face.setAttribute("rotation", "0 " + "90" + " 0");
-        face.setAttribute("position", "-1 0 0");
+        face.setAttribute("rotation", "180 " + "-90" + " 90");
+        face.setAttribute("position", "1 0 0");
+        face.setAttribute(
+          "text",
+          "value: 2; width: 6; height: 2; lineHeight: 2; align: center; wrapCount: 15"
+        );
       }
 
       if (i === 2) {
-        face.setAttribute("rotation", "0 " + "-90" + " 0");
-        face.setAttribute("position", "1 0 0");
+        face.setAttribute("rotation", "90 " + "0" + " 180");
+        face.setAttribute("position", "0 -1 0");
+        face.setAttribute(
+          "text",
+          "value: 3; width: 6; height: 2; lineHeight: 2; align: center; wrapCount: 15"
+        );
       }
 
       if (i === 3) {
-        face.setAttribute("rotation", "0 " + "0" + " 0");
-        face.setAttribute("position", "0 0 -1");
+        face.setAttribute("rotation", "180 " + "90" + " -90");
+        face.setAttribute("position", "-1 0 0");
+        face.setAttribute(
+          "text",
+          "value: 4; width: 6; height: 2; lineHeight: 2; align: center; wrapCount: 15"
+        );
       }
 
       if (i === 4) {
-        face.setAttribute("rotation", "90 " + "0" + " 0");
-        face.setAttribute("position", "0 1 0");
+        face.setAttribute("rotation", "0 " + "0" + " 0");
+        face.setAttribute("position", "0 0 1");
+        face.setAttribute(
+          "text",
+          "value: 5; width: 6; height: 2; lineHeight: 2; align: center; wrapCount: 15"
+        );
       }
 
       if (i === 5) {
-        face.setAttribute("rotation", "-90 " + "0" + " 0");
-        face.setAttribute("position", "0 -1 0");
+        face.setAttribute("rotation", "180 " + "0" + " 0");
+        face.setAttribute("position", "0 0 -1");
+        face.setAttribute(
+          "text",
+          "value: 6; width: 6; height: 2; lineHeight: 2; align: center; wrapCount: 15"
+        );
       }
 
       face.addEventListener("mousedown", function(e) {
@@ -47,7 +71,7 @@ AFRAME.registerComponent("multi-sided-pallette", {
       });
 
       face.addEventListener("mouseup", function(e) {
-        face.setAttribute(
+        e.target.setAttribute(
           "material",
           "color",
           e.target.isMouseEnter ? "#24CAFF" : "#CCC"
@@ -61,7 +85,7 @@ AFRAME.registerComponent("multi-sided-pallette", {
 
       face.addEventListener("mouseleave", function(e) {
         e.target.setAttribute("material", "color", "#CCC");
-        e.target.isMouseEnter = true;
+        e.target.isMouseEnter = false;
       });
 
       this.el.appendChild(face);

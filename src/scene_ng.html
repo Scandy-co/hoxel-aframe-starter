@@ -2,7 +2,7 @@
   <a-entity position="0 3.2 0" camera look-controls wasd-controls></a-entity>
 
   <!-- Left Hand Pallette -->
-  <a-entity oculus-touch-controls="hand: left">
+  <a-entity oculus-touch-controls="hand: left" button-listener>
     <a-entity mixin="pallette"></a-entity>
   </a-entity>
 
@@ -20,8 +20,8 @@
     <a-mixin
       id="pallette"
       geometry="primitive: box; buffer: false"
-      rotation="0 0 0"
       scale="0.1 0.1 0.1"
+      rotation="0 0 0"
       multi-sided-pallette
       shadow="cast: true; receive: false"
     ></a-mixin>
