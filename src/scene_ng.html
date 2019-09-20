@@ -2,7 +2,11 @@
   <a-entity position="0 3.2 0" camera look-controls wasd-controls></a-entity>
 
   <!-- Left Hand Pallette -->
-  <a-entity oculus-touch-controls="hand: left" button-listener>
+  <a-entity
+    oculus-touch-controls="hand: left"
+    tracked-controls="controller: 0;"
+    button-listener
+  >
     <a-entity mixin="pallette"></a-entity>
   </a-entity>
 
