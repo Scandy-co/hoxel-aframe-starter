@@ -3,6 +3,7 @@ AFRAME.registerComponent("multi-sided-pallette", {
   init: function() {
     var mesh = this.el.getObject3D("mesh");
     var geom = mesh.geometry;
+    var currentEvent;
 
     for (var i = 0; i < geom.faces.length / 2; i++) {
       var face = document.createElement("a-plane");
@@ -61,6 +62,7 @@ AFRAME.registerComponent("multi-sided-pallette", {
       }
 
       this.el.appendChild(face);
+      cone.dispatchEvent(new Event(currentEvent));
     }
   },
   assignFaceNumber: function(face, num) {
@@ -92,8 +94,10 @@ AFRAME.registerComponent("multi-sided-pallette", {
   onMouseDown: function(e) {
     e.target.setAttribute("material", "color", "#EF2D5E");
     if (e.target.tagName === "A-PLANE") {
+      e.target.firstChild.dispatchEvent(new Event("rotation-pause"));
       e.target.firstChild.setAttribute("material", "color", "#EF2D5E");
     } else {
+      e.target.dispatchEvent(new Event("rotation-pause"));
       e.target.parentNode.setAttribute("material", "color", "#EF2D5E");
     }
   },
@@ -104,12 +108,14 @@ AFRAME.registerComponent("multi-sided-pallette", {
       e.target.isMouseEnter ? "#24CAFF" : "#CCC"
     );
     if (e.target.tagName === "A-PLANE") {
+      e.target.firstChild.dispatchEvent(new Event("rotation-resume"));
       e.target.firstChild.setAttribute(
         "material",
         "color",
         e.target.isMouseEnter ? "#24CAFF" : "#CCC"
       );
     } else {
+      e.target.dispatchEvent(new Event("rotation-resume"));
       e.target.parentNode.setAttribute(
         "material",
         "color",
@@ -125,7 +131,7 @@ AFRAME.registerComponent("multi-sided-pallette", {
     cone.setAttribute("position", "0 0 1.0");
     cone.setAttribute(
       "animation",
-      "property: rotation; to: 0 0 360; dur: 5000; easing: linear; loop: true; pauseEvents: mousedown; resumeEvents: mouseup"
+      "property: rotation; to: 0 0 360; dur: 5000; easing: linear; loop: true; pauseEvents: rotation-pause; resumeEvents: rotation-resume"
     );
     cone.className = "selectable";
     return cone;
