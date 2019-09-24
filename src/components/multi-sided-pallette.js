@@ -1,13 +1,15 @@
+var clonedNode;
+
 AFRAME.registerComponent("multi-sided-pallette", {
   dependencies: ["geometry"],
   init: function() {
     var mesh = this.el.getObject3D("mesh");
     var geom = mesh.geometry;
-    var currentEvent;
 
     for (var i = 0; i < geom.faces.length / 2; i++) {
       var face = document.createElement("a-plane");
       var cone = this.createCone();
+      // var cube = this.createCube();
 
       // create the inner cube
       face.className = "selectable";
@@ -62,7 +64,6 @@ AFRAME.registerComponent("multi-sided-pallette", {
       }
 
       this.el.appendChild(face);
-      cone.dispatchEvent(new Event(currentEvent));
     }
   },
   assignFaceNumber: function(face, num) {
@@ -96,10 +97,13 @@ AFRAME.registerComponent("multi-sided-pallette", {
     if (e.target.tagName === "A-PLANE") {
       e.target.firstChild.dispatchEvent(new Event("rotation-pause"));
       e.target.firstChild.setAttribute("material", "color", "#EF2D5E");
+      clonedNode = e.target.firstChild.cloneNode(true);
     } else {
       e.target.dispatchEvent(new Event("rotation-pause"));
       e.target.parentNode.setAttribute("material", "color", "#EF2D5E");
+      clonedNode = e.target.cloneNode(true);
     }
+    transferObject();
   },
   onMouseUp: function(e) {
     e.target.setAttribute(
@@ -122,13 +126,14 @@ AFRAME.registerComponent("multi-sided-pallette", {
         e.target.isMouseEnter ? "#24CAFF" : "#CCC"
       );
     }
+    releaseObject();
   },
   createCone: function() {
     var cone = document.createElement("a-cone");
     cone.setAttribute("radius-bottom", "0.25");
     cone.setAttribute("radius-top", "0");
     cone.setAttribute("height", "1.5");
-    cone.setAttribute("position", "0 0 1.0");
+    cone.setAttribute("position", "0 0 1.5");
     cone.setAttribute(
       "animation",
       "property: rotation; to: 0 0 360; dur: 5000; easing: linear; loop: true; pauseEvents: rotation-pause; resumeEvents: rotation-resume"
@@ -136,4 +141,31 @@ AFRAME.registerComponent("multi-sided-pallette", {
     cone.className = "selectable";
     return cone;
   }
+  // createCube: function() {
+  //   var cube = document.createElement("a-entity");
+  //   cube.setAttribute("mixin", "cube");
+  //   cube.setAttribute("position", "0 0 1.0");
+  //   cube.setAttribute(
+  //     "animation",
+  //     "property: rotation; to: 0 0 360; dur: 5000; easing: linear; loop: true; pauseEvents: rotation-pause; resumeEvents: rotation-resume"
+  //   );
+  //   cube.classList.add("cube");
+  //   cube.classList.add("selectable");
+  //   return cube;
+  // }
 });
+
+function transferObject() {
+  clonedNode.setAttribute("radius-bottom", "0.1");
+  clonedNode.setAttribute("radius-top", "0");
+  clonedNode.setAttribute("height", ".5");
+  clonedNode.setAttribute("grabbable");
+  clonedNode.setAttribute("draggable");
+  clonedNode.setAttribute("hoverable");
+  clonedNode.setAttribute("shadow");
+  document.querySelector("#rHand").appendChild(clonedNode);
+}
+
+function releaseObject() {
+  clonedNode.setAttribute("body", { type: "dynamic" });
+}

@@ -14,18 +14,13 @@
   <a-light type="point" position="0 10 -30" intensity="0.85"></a-light>
 
   <!-- scene objects -->
-  <a-entity
-    class="cube"
-    mixin="cube"
-    position="0 0.265 -1"
-    material="color: red"
-  ></a-entity>
+  <a-entity class="cube" mixin="cube" position="0 0.265 -.25"></a-entity>
   <!-- ground collider keeps objets from falling -->
   <a-box
     static-body
-    width="100"
+    width="1000"
     height="0.001"
-    depth="100"
+    depth="1000"
     visible="false"
   ></a-box>
 
@@ -44,6 +39,8 @@
     <a-entity
       id="rhand"
       mixin="touch"
+      laser-controls="hand: right"
+      line="color: #118A7E"
       vive-controls="hand: right"
       oculus-touch-controls="hand: right"
       windows-motion-controls="hand: right"
@@ -81,16 +78,6 @@
     event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
     dynamic-body
     shadow
-  ></a-mixin>
-  <a-mixin
-    id="transformer"
-    color-randomizer
-    droppable
-    static-body
-    collision-filter="collisionForces: false"
-    event-set__dragon="_event: dragover-start; material.wireframe: true"
-    event-set__dragoff="_event: dragover-end; material.wireframe: false"
-    geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
   ></a-mixin>
   <a-mixin
     id="touch"
