@@ -1,7 +1,31 @@
-<a-scene background="color: #494d5c" antialias="true">
+<a-scene physics background="color: #494d5c" antialias="true">
+  <!-- scene environment entities -->
   <a-entity position="0 3.2 0" camera look-controls wasd-controls></a-entity>
 
-  <!-- Left Hand Pallette -->
+  <a-circle
+    rotation="-90 0 0"
+    radius="20"
+    color="#666"
+    position="0 -0.1 0"
+    shadow="receive: true"
+    roughness="1"
+  ></a-circle>
+
+  <a-light position="0 .75 1" intensity="0.75"></a-light>
+  <a-light type="point" position="0 10 -30" intensity="0.85"></a-light>
+
+  <!-- Right Hand -->
+  <!-- Right Hand Raycaster -->
+  <!-- <a-entity
+    id="rightHand"
+    laser-controls="hand: right"
+    raycaster="objects: .selectable"
+    line="color: #118A7E"
+  ></a-entity> -->
+
+  <!-- superhands right hand -->
+
+  <!-- Left Hand  -->
   <a-entity
     oculus-touch-controls="hand: left; model: false"
     tracked-controls="controller: 0;"
@@ -10,43 +34,15 @@
     <a-entity mixin="pallette"></a-entity>
   </a-entity>
 
-  <!-- Right Hand Raycaster -->
-  <a-entity
-    id="rightHand"
-    laser-controls="hand: right"
-    raycaster="objects: .selectable"
-    line="color: #118A7E"
-  ></a-entity>
+  <!-- Mixins -->
+  <a-mixin
+    multi-sided-pallette
+    id="pallette"
+    geometry="primitive: box; buffer: false"
+    scale="0.05 0.05 0.05"
+    rotation="0 0 0"
+    shadow="cast: true; receive: false"
+  ></a-mixin>
 
-  <a-light position="0 .75 1" intensity="0.75"></a-light>
-
-  <a-entity position="0 0 -10">
-    <a-mixin
-      id="pallette"
-      geometry="primitive: box; buffer: false"
-      scale="0.05 0.05 0.05"
-      rotation="0 0 0"
-      multi-sided-pallette
-      shadow="cast: true; receive: false"
-    ></a-mixin>
-
-    <a-circle
-      rotation="-90 0 0"
-      radius="20"
-      color="#666"
-      position="0 -0.1 0"
-      shadow="receive: true"
-      roughness="1"
-    ></a-circle>
-
-    <!-- Lighting -->
-    <a-light
-      type="point"
-      position="0 10 -30"
-      intensity="0.85"
-      shadow-if-mobile
-    ></a-light>
-
-    <a-torus radius="20" arc="360" rotation="-90 0 0"></a-torus>
-  </a-entity>
+  <a-torus radius="20" arc="360" rotation="-90 0 0"></a-torus>
 </a-scene>
