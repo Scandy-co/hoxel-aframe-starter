@@ -1,7 +1,6 @@
 <a-scene physics background="color: #494d5c" antialias="true">
   <!-- scene environment entities -->
   <a-entity position="0 3.2 0" camera look-controls wasd-controls></a-entity>
-
   <a-circle
     rotation="-90 0 0"
     radius="20"
@@ -10,12 +9,28 @@
     shadow="receive: true"
     roughness="1"
   ></a-circle>
-
+  <a-torus radius="20" arc="360" rotation="-90 0 0"></a-torus>
   <a-light position="0 .75 1" intensity="0.75"></a-light>
   <a-light type="point" position="0 10 -30" intensity="0.85"></a-light>
 
+  <!-- scene objects -->
+  <a-entity
+    class="cube"
+    mixin="cube"
+    position="0 0.265 -1"
+    material="color: red"
+  ></a-entity>
+  <!-- ground collider keeps objets from falling -->
+  <a-box
+    static-body
+    width="100"
+    height="0.001"
+    depth="100"
+    visible="false"
+  ></a-box>
+
   <!-- Right Hand -->
-  <!-- Right Hand Raycaster -->
+  <!-- Raycaster -->
   <!-- <a-entity
     id="rightHand"
     laser-controls="hand: right"
@@ -23,7 +38,18 @@
     line="color: #118A7E"
   ></a-entity> -->
 
-  <!-- superhands right hand -->
+  <!-- SuperHands -->
+  <a-entity>
+    <a-camera positon="0 1.6 0"></a-camera>
+    <a-entity
+      id="rhand"
+      mixin="touch"
+      vive-controls="hand: right"
+      oculus-touch-controls="hand: right"
+      windows-motion-controls="hand: right"
+    >
+    </a-entity>
+  </a-entity>
 
   <!-- Left Hand  -->
   <a-entity
@@ -44,5 +70,35 @@
     shadow="cast: true; receive: false"
   ></a-mixin>
 
-  <a-torus radius="20" arc="360" rotation="-90 0 0"></a-torus>
+  <a-mixin
+    id="cube"
+    geometry="primitive: box; width: 0.33; height: 0.33; depth: 0.33"
+    hoverable
+    grabbable
+    stretchable
+    draggable
+    event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
+    event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
+    dynamic-body
+    shadow
+  ></a-mixin>
+  <a-mixin
+    id="transformer"
+    color-randomizer
+    droppable
+    static-body
+    collision-filter="collisionForces: false"
+    event-set__dragon="_event: dragover-start; material.wireframe: true"
+    event-set__dragoff="_event: dragover-end; material.wireframe: false"
+    geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
+  ></a-mixin>
+  <a-mixin
+    id="touch"
+    physics-collider
+    phase-shift
+    collision-filter="collisionForces: false"
+    static-body="shape: sphere; sphereRadius: 0.02"
+    super-hands="colliderEvent: collisions; colliderEventProperty: els; colliderEndEvent: collisions; colliderEndEventProperty: clearedEls;"
+  >
+  </a-mixin>
 </a-scene>
