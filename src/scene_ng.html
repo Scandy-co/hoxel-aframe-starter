@@ -1,4 +1,4 @@
-<a-scene physics background="color: #494d5c" antialias="true">
+<a-scene id="scene" physics background="color: #494d5c" antialias="true">
   <!-- scene environment entities -->
   <a-entity position="0 3.2 0" camera look-controls wasd-controls></a-entity>
   <a-circle
@@ -14,14 +14,22 @@
   <a-light type="point" position="0 10 -30" intensity="0.85"></a-light>
 
   <!-- scene objects -->
-  <a-entity class="cube" mixin="cube" position="0 0.265 -.25"></a-entity>
+  <!-- <a-entity class="cube" mixin="cube" position="0 0.265 -.25"></a-entity> -->
   <!-- ground collider keeps objets from falling -->
   <a-box
     static-body
     width="1000"
-    height="0.001"
+    height="0.1"
     depth="1000"
     visible="false"
+  ></a-box>
+
+  <a-box
+    static-body
+    width="2"
+    height=".02"
+    depth="1.5"
+    position="0 .75 -2"
   ></a-box>
 
   <!-- Right Hand -->
@@ -35,7 +43,7 @@
 
   <!-- SuperHands -->
   <a-entity>
-    <a-camera positon="0 1.6 0"></a-camera>
+    <a-camera id="camera" rotation-reader positon="0 1.6 0"></a-camera>
     <a-entity
       id="rhand"
       mixin="touch"
