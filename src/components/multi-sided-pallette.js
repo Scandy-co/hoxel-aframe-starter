@@ -6,7 +6,8 @@ AFRAME.registerComponent("multi-sided-pallette", {
 
     for (var i = 0; i < geom.faces.length / 2; i++) {
       var face = document.createElement("a-plane");
-      var cone = this.createCone();
+      var cube = this.createCube();
+      var sphere = this.createSphere();
 
       // create the inner cube
       face.className = "selectable";
@@ -15,7 +16,11 @@ AFRAME.registerComponent("multi-sided-pallette", {
       face.setAttribute("height", 1.5);
 
       // attached elements to each side (will be replaced by stl models of objects)
-      face.appendChild(cone);
+      if (i % 2) {
+        face.appendChild(cube);
+      } else {
+        face.appendChild(sphere);
+      }
 
       // add listeners
       face.addEventListener("mousedown", this.onMouseDown);
@@ -100,11 +105,14 @@ AFRAME.registerComponent("multi-sided-pallette", {
     }
   },
   onMouseUp: function(e) {
+    var type;
+
     e.target.setAttribute(
       "material",
       "color",
       e.target.isMouseEnter ? "#24CAFF" : "#CCC"
     );
+
     if (e.target.tagName === "A-PLANE") {
       e.target.firstChild.dispatchEvent(new Event("rotation-resume"));
       e.target.firstChild.setAttribute(
@@ -113,6 +121,7 @@ AFRAME.registerComponent("multi-sided-pallette", {
         e.target.isMouseEnter ? "#24CAFF" : "#CCC"
       );
     } else {
+      type = e.target.getAttribute("data-type");
       e.target.dispatchEvent(new Event("rotation-resume"));
       e.target.parentNode.setAttribute(
         "material",
@@ -120,20 +129,38 @@ AFRAME.registerComponent("multi-sided-pallette", {
         e.target.isMouseEnter ? "#24CAFF" : "#CCC"
       );
     }
-    spawnCube();
+
+    if (type === "cube") {
+      spawnCube();
+    } else if (type === "sphere") {
+      spawnSphere();
+    }
   },
-  createCone: function() {
-    var cone = document.createElement("a-cone");
-    cone.setAttribute("radius-bottom", "0.25");
-    cone.setAttribute("radius-top", "0");
-    cone.setAttribute("height", "1.5");
-    cone.setAttribute("position", "0 0 1.5");
-    cone.setAttribute(
+  createCube: function() {
+    var cube = document.createElement("a-box");
+    cube.setAttribute("height", "0.5");
+    cube.setAttribute("width", "0.5");
+    cube.setAttribute("depth", "0.5");
+    cube.setAttribute("position", "0 0 1.25");
+    cube.setAttribute("data-type", "cube");
+    cube.setAttribute(
       "animation",
       "property: rotation; to: 0 0 360; dur: 5000; easing: linear; loop: true; pauseEvents: rotation-pause; resumeEvents: rotation-resume"
     );
-    cone.className = "selectable";
-    return cone;
+    cube.className = "selectable";
+    return cube;
+  },
+  createSphere: function() {
+    var sphere = document.createElement("a-sphere");
+    sphere.setAttribute("radius", "0.25");
+    sphere.setAttribute("position", "0 0 1.25");
+    sphere.setAttribute("data-type", "sphere");
+    sphere.setAttribute(
+      "animation",
+      "property: rotation; to: 0 0 360; dur: 5000; easing: linear; loop: true; pauseEvents: rotation-pause; resumeEvents: rotation-resume"
+    );
+    sphere.className = "selectable";
+    return sphere;
   }
 });
 
@@ -142,11 +169,13 @@ function spawnCube() {
   var posX = document.querySelector("#camera").object3D.position.x;
   cube.setAttribute("mixin", "cube");
   cube.setAttribute("position", posX + " 1.5 -2");
-  cube.setAttribute(
-    "animation",
-    "property: rotation; to: 0 0 360; dur: 5000; easing: linear; loop: true; pauseEvents: rotation-pause; resumeEvents: rotation-resume"
-  );
-  cube.classList.add("cube");
-  cube.classList.add("selectable");
   document.querySelector("#scene").appendChild(cube);
+}
+
+function spawnSphere() {
+  var sphere = document.createElement("a-entity");
+  var posX = document.querySelector("#camera").object3D.position.x;
+  sphere.setAttribute("mixin", "sphere");
+  sphere.setAttribute("position", posX + " 5 -2");
+  document.querySelector("#scene").appendChild(sphere);
 }
