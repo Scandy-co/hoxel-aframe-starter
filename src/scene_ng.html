@@ -82,13 +82,15 @@
     position="-2.05 0 .95"
   ></a-box>
 
+  <!-- bat -->
   <a-gltf-model
     hoverable
     grabbable
     draggable
-    dynamic-body="shape: box; mass: 3"
+    dynamic-body
+    body="mass: 3; shape: box;"
     src="#baseball-bat"
-    position="-1.5 1 -.5"
+    position="-1.5 .7 -.5"
     rotation="-80 180 0"
     scale=".1 .1 .1"
   ></a-gltf-model>
@@ -101,8 +103,9 @@
     position=".65 .76 -1.6"
   ></a-circle>
   <a-entity
+    id="cole_1"
+    static-body
     hydro-motion
-    id="george"
     visible="false"
     scvv="src: //d2a0b7lq85v0ro.cloudfront.net/cole-amazed"
     scale="1 1 1"
@@ -111,7 +114,7 @@
   >
   </a-entity>
 
-  <a-circle
+  <!-- <a-circle
     radius=".25"
     rotation="-90 0 0"
     color="black"
@@ -199,7 +202,7 @@
     rotation="-20 180 0"
     position="-.65 -.5 -1.7"
   >
-  </a-entity>
+  </a-entity> -->
 
   <!-- Right Hand -->
   <a-entity>
@@ -280,7 +283,7 @@
     dynamic-body="shape: box"
     shadow
   >
-    <a-box height="1" width="1" depth="1"></a-box>
+    <!-- <a-box height="1" width="1" depth="1"></a-box> -->
   </a-mixin>
 
   <a-mixin
