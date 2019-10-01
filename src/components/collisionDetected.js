@@ -1,12 +1,3 @@
-// AFRAME.registerComponent("collision-detected", {
-//   init: function() {
-//     this.originalRotation = this.el.object3D.rotation.y;
-//     this.el.addEventListener("collisions", function(e) {
-//       console.log(`object hitting: ${e.detail.els}`);
-//     });
-//   }
-// });
-
 AFRAME.registerComponent("collision-detected", {
   init: function() {
     this.originalRotation = this.el.object3D.rotation.y;

@@ -2,7 +2,7 @@ AFRAME.registerComponent("hydro-motion", {
   schema: {
     isMoving: { default: false },
     direction: { default: "up" },
-    valueY: { default: 1 }
+    valueY: { default: 0 }
   },
   init: function() {
     this.originalRotation = this.el.object3D.rotation.y;
@@ -15,7 +15,7 @@ AFRAME.registerComponent("hydro-motion", {
   tick: function() {
     var data = this.data;
 
-    if (!data.isMoving && Math.random() > 0.99) {
+    if (!data.isMoving && Math.random() > 0.9) {
       data.isMoving = true;
       if (Math.random() > 0.75) {
         this.el.setAttribute("visible", "true");
@@ -26,13 +26,13 @@ AFRAME.registerComponent("hydro-motion", {
       if (data.direction === "up") {
         data.valueY += 0.04;
         this.el.object3D.position.y = data.valueY;
-        if (data.valueY.toFixed(2) <= 1.15 && data.valueY.toFixed(2) >= 1.1) {
+        if (data.valueY.toFixed(2) <= 0.8 && data.valueY.toFixed(2) >= 0.7) {
           data.direction = "down";
         }
       } else if (data.direction === "down") {
         data.valueY -= 0.01;
         this.el.object3D.position.y = data.valueY;
-        if (data.valueY.toFixed(2) >= -0.2 && data.valueY.toFixed(2) <= 0.15) {
+        if (data.valueY.toFixed(2) >= 0 && data.valueY.toFixed(2) <= 0.15) {
           data.direction = "up";
           data.isMoving = false;
         }

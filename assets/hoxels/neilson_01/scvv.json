@@ -1,0 +1,964 @@
+{
+    "audio": "scvv_audio.wav",
+    "audio_us_offset": -1569949399273527,
+    "average_fps": 30,
+    "frames": [
+        {
+            "delay_us": 0,
+            "initial_frame_offset_us": 0,
+            "mesh_path": "000139_scandycore_raw_frame.drc",
+            "texture_path": "000139_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34874,
+            "initial_frame_offset_us": 34874,
+            "mesh_path": "000140_scandycore_raw_frame.drc",
+            "texture_path": "000140_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32083,
+            "initial_frame_offset_us": 66957,
+            "mesh_path": "000141_scandycore_raw_frame.drc",
+            "texture_path": "000141_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31957,
+            "initial_frame_offset_us": 98914,
+            "mesh_path": "000142_scandycore_raw_frame.drc",
+            "texture_path": "000142_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35818,
+            "initial_frame_offset_us": 134732,
+            "mesh_path": "000143_scandycore_raw_frame.drc",
+            "texture_path": "000143_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32673,
+            "initial_frame_offset_us": 167405,
+            "mesh_path": "000144_scandycore_raw_frame.drc",
+            "texture_path": "000144_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32350,
+            "initial_frame_offset_us": 199755,
+            "mesh_path": "000145_scandycore_raw_frame.drc",
+            "texture_path": "000145_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33514,
+            "initial_frame_offset_us": 233269,
+            "mesh_path": "000146_scandycore_raw_frame.drc",
+            "texture_path": "000146_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33313,
+            "initial_frame_offset_us": 266582,
+            "mesh_path": "000147_scandycore_raw_frame.drc",
+            "texture_path": "000147_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33563,
+            "initial_frame_offset_us": 300145,
+            "mesh_path": "000148_scandycore_raw_frame.drc",
+            "texture_path": "000148_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33948,
+            "initial_frame_offset_us": 334093,
+            "mesh_path": "000149_scandycore_raw_frame.drc",
+            "texture_path": "000149_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33503,
+            "initial_frame_offset_us": 367596,
+            "mesh_path": "000150_scandycore_raw_frame.drc",
+            "texture_path": "000150_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33449,
+            "initial_frame_offset_us": 401045,
+            "mesh_path": "000151_scandycore_raw_frame.drc",
+            "texture_path": "000151_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33712,
+            "initial_frame_offset_us": 434757,
+            "mesh_path": "000152_scandycore_raw_frame.drc",
+            "texture_path": "000152_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33226,
+            "initial_frame_offset_us": 467983,
+            "mesh_path": "000153_scandycore_raw_frame.drc",
+            "texture_path": "000153_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34041,
+            "initial_frame_offset_us": 502024,
+            "mesh_path": "000154_scandycore_raw_frame.drc",
+            "texture_path": "000154_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33277,
+            "initial_frame_offset_us": 535301,
+            "mesh_path": "000155_scandycore_raw_frame.drc",
+            "texture_path": "000155_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32210,
+            "initial_frame_offset_us": 567511,
+            "mesh_path": "000156_scandycore_raw_frame.drc",
+            "texture_path": "000156_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34699,
+            "initial_frame_offset_us": 602210,
+            "mesh_path": "000157_scandycore_raw_frame.drc",
+            "texture_path": "000157_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33910,
+            "initial_frame_offset_us": 636120,
+            "mesh_path": "000158_scandycore_raw_frame.drc",
+            "texture_path": "000158_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32678,
+            "initial_frame_offset_us": 668798,
+            "mesh_path": "000159_scandycore_raw_frame.drc",
+            "texture_path": "000159_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34222,
+            "initial_frame_offset_us": 703020,
+            "mesh_path": "000160_scandycore_raw_frame.drc",
+            "texture_path": "000160_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32022,
+            "initial_frame_offset_us": 735042,
+            "mesh_path": "000161_scandycore_raw_frame.drc",
+            "texture_path": "000161_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33750,
+            "initial_frame_offset_us": 768792,
+            "mesh_path": "000162_scandycore_raw_frame.drc",
+            "texture_path": "000162_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33927,
+            "initial_frame_offset_us": 802719,
+            "mesh_path": "000163_scandycore_raw_frame.drc",
+            "texture_path": "000163_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33137,
+            "initial_frame_offset_us": 835856,
+            "mesh_path": "000164_scandycore_raw_frame.drc",
+            "texture_path": "000164_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33528,
+            "initial_frame_offset_us": 869384,
+            "mesh_path": "000165_scandycore_raw_frame.drc",
+            "texture_path": "000165_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33056,
+            "initial_frame_offset_us": 902440,
+            "mesh_path": "000166_scandycore_raw_frame.drc",
+            "texture_path": "000166_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33756,
+            "initial_frame_offset_us": 936196,
+            "mesh_path": "000167_scandycore_raw_frame.drc",
+            "texture_path": "000167_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33666,
+            "initial_frame_offset_us": 969862,
+            "mesh_path": "000168_scandycore_raw_frame.drc",
+            "texture_path": "000168_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33212,
+            "initial_frame_offset_us": 1003074,
+            "mesh_path": "000169_scandycore_raw_frame.drc",
+            "texture_path": "000169_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33426,
+            "initial_frame_offset_us": 1036500,
+            "mesh_path": "000170_scandycore_raw_frame.drc",
+            "texture_path": "000170_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32406,
+            "initial_frame_offset_us": 1068906,
+            "mesh_path": "000171_scandycore_raw_frame.drc",
+            "texture_path": "000171_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34414,
+            "initial_frame_offset_us": 1103320,
+            "mesh_path": "000172_scandycore_raw_frame.drc",
+            "texture_path": "000172_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33570,
+            "initial_frame_offset_us": 1136890,
+            "mesh_path": "000173_scandycore_raw_frame.drc",
+            "texture_path": "000173_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32570,
+            "initial_frame_offset_us": 1169460,
+            "mesh_path": "000174_scandycore_raw_frame.drc",
+            "texture_path": "000174_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33046,
+            "initial_frame_offset_us": 1202506,
+            "mesh_path": "000175_scandycore_raw_frame.drc",
+            "texture_path": "000175_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33604,
+            "initial_frame_offset_us": 1236110,
+            "mesh_path": "000176_scandycore_raw_frame.drc",
+            "texture_path": "000176_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32986,
+            "initial_frame_offset_us": 1269096,
+            "mesh_path": "000177_scandycore_raw_frame.drc",
+            "texture_path": "000177_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35380,
+            "initial_frame_offset_us": 1304476,
+            "mesh_path": "000178_scandycore_raw_frame.drc",
+            "texture_path": "000178_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31924,
+            "initial_frame_offset_us": 1336400,
+            "mesh_path": "000179_scandycore_raw_frame.drc",
+            "texture_path": "000179_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33062,
+            "initial_frame_offset_us": 1369462,
+            "mesh_path": "000180_scandycore_raw_frame.drc",
+            "texture_path": "000180_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33825,
+            "initial_frame_offset_us": 1403287,
+            "mesh_path": "000181_scandycore_raw_frame.drc",
+            "texture_path": "000181_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33181,
+            "initial_frame_offset_us": 1436468,
+            "mesh_path": "000182_scandycore_raw_frame.drc",
+            "texture_path": "000182_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34297,
+            "initial_frame_offset_us": 1470765,
+            "mesh_path": "000183_scandycore_raw_frame.drc",
+            "texture_path": "000183_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34166,
+            "initial_frame_offset_us": 1504931,
+            "mesh_path": "000184_scandycore_raw_frame.drc",
+            "texture_path": "000184_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33314,
+            "initial_frame_offset_us": 1538245,
+            "mesh_path": "000185_scandycore_raw_frame.drc",
+            "texture_path": "000185_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32757,
+            "initial_frame_offset_us": 1571002,
+            "mesh_path": "000186_scandycore_raw_frame.drc",
+            "texture_path": "000186_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33608,
+            "initial_frame_offset_us": 1604610,
+            "mesh_path": "000187_scandycore_raw_frame.drc",
+            "texture_path": "000187_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34333,
+            "initial_frame_offset_us": 1638943,
+            "mesh_path": "000188_scandycore_raw_frame.drc",
+            "texture_path": "000188_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32757,
+            "initial_frame_offset_us": 1671700,
+            "mesh_path": "000189_scandycore_raw_frame.drc",
+            "texture_path": "000189_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31267,
+            "initial_frame_offset_us": 1702967,
+            "mesh_path": "000190_scandycore_raw_frame.drc",
+            "texture_path": "000190_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34099,
+            "initial_frame_offset_us": 1737066,
+            "mesh_path": "000191_scandycore_raw_frame.drc",
+            "texture_path": "000191_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33029,
+            "initial_frame_offset_us": 1770095,
+            "mesh_path": "000192_scandycore_raw_frame.drc",
+            "texture_path": "000192_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34939,
+            "initial_frame_offset_us": 1805034,
+            "mesh_path": "000193_scandycore_raw_frame.drc",
+            "texture_path": "000193_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33511,
+            "initial_frame_offset_us": 1838545,
+            "mesh_path": "000194_scandycore_raw_frame.drc",
+            "texture_path": "000194_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31997,
+            "initial_frame_offset_us": 1870542,
+            "mesh_path": "000195_scandycore_raw_frame.drc",
+            "texture_path": "000195_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35031,
+            "initial_frame_offset_us": 1905573,
+            "mesh_path": "000196_scandycore_raw_frame.drc",
+            "texture_path": "000196_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32948,
+            "initial_frame_offset_us": 1938521,
+            "mesh_path": "000197_scandycore_raw_frame.drc",
+            "texture_path": "000197_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32539,
+            "initial_frame_offset_us": 1971060,
+            "mesh_path": "000198_scandycore_raw_frame.drc",
+            "texture_path": "000198_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34708,
+            "initial_frame_offset_us": 2005768,
+            "mesh_path": "000199_scandycore_raw_frame.drc",
+            "texture_path": "000199_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32407,
+            "initial_frame_offset_us": 2038175,
+            "mesh_path": "000200_scandycore_raw_frame.drc",
+            "texture_path": "000200_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34079,
+            "initial_frame_offset_us": 2072254,
+            "mesh_path": "000201_scandycore_raw_frame.drc",
+            "texture_path": "000201_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34389,
+            "initial_frame_offset_us": 2106643,
+            "mesh_path": "000202_scandycore_raw_frame.drc",
+            "texture_path": "000202_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32008,
+            "initial_frame_offset_us": 2138651,
+            "mesh_path": "000203_scandycore_raw_frame.drc",
+            "texture_path": "000203_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33491,
+            "initial_frame_offset_us": 2172142,
+            "mesh_path": "000204_scandycore_raw_frame.drc",
+            "texture_path": "000204_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33415,
+            "initial_frame_offset_us": 2205557,
+            "mesh_path": "000205_scandycore_raw_frame.drc",
+            "texture_path": "000205_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31135,
+            "initial_frame_offset_us": 2236692,
+            "mesh_path": "000206_scandycore_raw_frame.drc",
+            "texture_path": "000206_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34344,
+            "initial_frame_offset_us": 2271036,
+            "mesh_path": "000207_scandycore_raw_frame.drc",
+            "texture_path": "000207_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35740,
+            "initial_frame_offset_us": 2306776,
+            "mesh_path": "000208_scandycore_raw_frame.drc",
+            "texture_path": "000208_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32289,
+            "initial_frame_offset_us": 2339065,
+            "mesh_path": "000209_scandycore_raw_frame.drc",
+            "texture_path": "000209_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31447,
+            "initial_frame_offset_us": 2370512,
+            "mesh_path": "000210_scandycore_raw_frame.drc",
+            "texture_path": "000210_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 36192,
+            "initial_frame_offset_us": 2406704,
+            "mesh_path": "000211_scandycore_raw_frame.drc",
+            "texture_path": "000211_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32953,
+            "initial_frame_offset_us": 2439657,
+            "mesh_path": "000212_scandycore_raw_frame.drc",
+            "texture_path": "000212_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34047,
+            "initial_frame_offset_us": 2473704,
+            "mesh_path": "000213_scandycore_raw_frame.drc",
+            "texture_path": "000213_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31467,
+            "initial_frame_offset_us": 2505171,
+            "mesh_path": "000214_scandycore_raw_frame.drc",
+            "texture_path": "000214_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35016,
+            "initial_frame_offset_us": 2540187,
+            "mesh_path": "000215_scandycore_raw_frame.drc",
+            "texture_path": "000215_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33043,
+            "initial_frame_offset_us": 2573230,
+            "mesh_path": "000216_scandycore_raw_frame.drc",
+            "texture_path": "000216_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34034,
+            "initial_frame_offset_us": 2607264,
+            "mesh_path": "000217_scandycore_raw_frame.drc",
+            "texture_path": "000217_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32661,
+            "initial_frame_offset_us": 2639925,
+            "mesh_path": "000218_scandycore_raw_frame.drc",
+            "texture_path": "000218_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33312,
+            "initial_frame_offset_us": 2673237,
+            "mesh_path": "000219_scandycore_raw_frame.drc",
+            "texture_path": "000219_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33834,
+            "initial_frame_offset_us": 2707071,
+            "mesh_path": "000220_scandycore_raw_frame.drc",
+            "texture_path": "000220_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32902,
+            "initial_frame_offset_us": 2739973,
+            "mesh_path": "000221_scandycore_raw_frame.drc",
+            "texture_path": "000221_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33183,
+            "initial_frame_offset_us": 2773156,
+            "mesh_path": "000222_scandycore_raw_frame.drc",
+            "texture_path": "000222_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34036,
+            "initial_frame_offset_us": 2807192,
+            "mesh_path": "000223_scandycore_raw_frame.drc",
+            "texture_path": "000223_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32264,
+            "initial_frame_offset_us": 2839456,
+            "mesh_path": "000224_scandycore_raw_frame.drc",
+            "texture_path": "000224_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34451,
+            "initial_frame_offset_us": 2873907,
+            "mesh_path": "000225_scandycore_raw_frame.drc",
+            "texture_path": "000225_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34512,
+            "initial_frame_offset_us": 2908419,
+            "mesh_path": "000226_scandycore_raw_frame.drc",
+            "texture_path": "000226_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31421,
+            "initial_frame_offset_us": 2939840,
+            "mesh_path": "000227_scandycore_raw_frame.drc",
+            "texture_path": "000227_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33561,
+            "initial_frame_offset_us": 2973401,
+            "mesh_path": "000228_scandycore_raw_frame.drc",
+            "texture_path": "000228_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33906,
+            "initial_frame_offset_us": 3007307,
+            "mesh_path": "000229_scandycore_raw_frame.drc",
+            "texture_path": "000229_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34036,
+            "initial_frame_offset_us": 3041343,
+            "mesh_path": "000230_scandycore_raw_frame.drc",
+            "texture_path": "000230_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33254,
+            "initial_frame_offset_us": 3074597,
+            "mesh_path": "000231_scandycore_raw_frame.drc",
+            "texture_path": "000231_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32776,
+            "initial_frame_offset_us": 3107373,
+            "mesh_path": "000232_scandycore_raw_frame.drc",
+            "texture_path": "000232_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32860,
+            "initial_frame_offset_us": 3140233,
+            "mesh_path": "000233_scandycore_raw_frame.drc",
+            "texture_path": "000233_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34494,
+            "initial_frame_offset_us": 3174727,
+            "mesh_path": "000234_scandycore_raw_frame.drc",
+            "texture_path": "000234_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33327,
+            "initial_frame_offset_us": 3208054,
+            "mesh_path": "000235_scandycore_raw_frame.drc",
+            "texture_path": "000235_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33334,
+            "initial_frame_offset_us": 3241388,
+            "mesh_path": "000236_scandycore_raw_frame.drc",
+            "texture_path": "000236_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31598,
+            "initial_frame_offset_us": 3272986,
+            "mesh_path": "000237_scandycore_raw_frame.drc",
+            "texture_path": "000237_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34640,
+            "initial_frame_offset_us": 3307626,
+            "mesh_path": "000238_scandycore_raw_frame.drc",
+            "texture_path": "000238_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35875,
+            "initial_frame_offset_us": 3343501,
+            "mesh_path": "000239_scandycore_raw_frame.drc",
+            "texture_path": "000239_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 30149,
+            "initial_frame_offset_us": 3373650,
+            "mesh_path": "000240_scandycore_raw_frame.drc",
+            "texture_path": "000240_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34852,
+            "initial_frame_offset_us": 3408502,
+            "mesh_path": "000241_scandycore_raw_frame.drc",
+            "texture_path": "000241_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31675,
+            "initial_frame_offset_us": 3440177,
+            "mesh_path": "000242_scandycore_raw_frame.drc",
+            "texture_path": "000242_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34316,
+            "initial_frame_offset_us": 3474493,
+            "mesh_path": "000243_scandycore_raw_frame.drc",
+            "texture_path": "000243_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33770,
+            "initial_frame_offset_us": 3508263,
+            "mesh_path": "000244_scandycore_raw_frame.drc",
+            "texture_path": "000244_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34398,
+            "initial_frame_offset_us": 3542661,
+            "mesh_path": "000245_scandycore_raw_frame.drc",
+            "texture_path": "000245_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32106,
+            "initial_frame_offset_us": 3574767,
+            "mesh_path": "000246_scandycore_raw_frame.drc",
+            "texture_path": "000246_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32438,
+            "initial_frame_offset_us": 3607205,
+            "mesh_path": "000247_scandycore_raw_frame.drc",
+            "texture_path": "000247_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35417,
+            "initial_frame_offset_us": 3642622,
+            "mesh_path": "000248_scandycore_raw_frame.drc",
+            "texture_path": "000248_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32793,
+            "initial_frame_offset_us": 3675415,
+            "mesh_path": "000249_scandycore_raw_frame.drc",
+            "texture_path": "000249_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34064,
+            "initial_frame_offset_us": 3709479,
+            "mesh_path": "000250_scandycore_raw_frame.drc",
+            "texture_path": "000250_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31895,
+            "initial_frame_offset_us": 3741374,
+            "mesh_path": "000251_scandycore_raw_frame.drc",
+            "texture_path": "000251_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34046,
+            "initial_frame_offset_us": 3775420,
+            "mesh_path": "000252_scandycore_raw_frame.drc",
+            "texture_path": "000252_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35344,
+            "initial_frame_offset_us": 3810764,
+            "mesh_path": "000253_scandycore_raw_frame.drc",
+            "texture_path": "000253_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 30738,
+            "initial_frame_offset_us": 3841502,
+            "mesh_path": "000254_scandycore_raw_frame.drc",
+            "texture_path": "000254_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34971,
+            "initial_frame_offset_us": 3876473,
+            "mesh_path": "000255_scandycore_raw_frame.drc",
+            "texture_path": "000255_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33839,
+            "initial_frame_offset_us": 3910312,
+            "mesh_path": "000256_scandycore_raw_frame.drc",
+            "texture_path": "000256_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31985,
+            "initial_frame_offset_us": 3942297,
+            "mesh_path": "000257_scandycore_raw_frame.drc",
+            "texture_path": "000257_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33327,
+            "initial_frame_offset_us": 3975624,
+            "mesh_path": "000258_scandycore_raw_frame.drc",
+            "texture_path": "000258_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33171,
+            "initial_frame_offset_us": 4008795,
+            "mesh_path": "000259_scandycore_raw_frame.drc",
+            "texture_path": "000259_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31940,
+            "initial_frame_offset_us": 4040735,
+            "mesh_path": "000260_scandycore_raw_frame.drc",
+            "texture_path": "000260_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34328,
+            "initial_frame_offset_us": 4075063,
+            "mesh_path": "000261_scandycore_raw_frame.drc",
+            "texture_path": "000261_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33773,
+            "initial_frame_offset_us": 4108836,
+            "mesh_path": "000262_scandycore_raw_frame.drc",
+            "texture_path": "000262_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33320,
+            "initial_frame_offset_us": 4142156,
+            "mesh_path": "000263_scandycore_raw_frame.drc",
+            "texture_path": "000263_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35174,
+            "initial_frame_offset_us": 4177330,
+            "mesh_path": "000264_scandycore_raw_frame.drc",
+            "texture_path": "000264_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31946,
+            "initial_frame_offset_us": 4209276,
+            "mesh_path": "000265_scandycore_raw_frame.drc",
+            "texture_path": "000265_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33933,
+            "initial_frame_offset_us": 4243209,
+            "mesh_path": "000266_scandycore_raw_frame.drc",
+            "texture_path": "000266_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33564,
+            "initial_frame_offset_us": 4276773,
+            "mesh_path": "000267_scandycore_raw_frame.drc",
+            "texture_path": "000267_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31863,
+            "initial_frame_offset_us": 4308636,
+            "mesh_path": "000268_scandycore_raw_frame.drc",
+            "texture_path": "000268_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35659,
+            "initial_frame_offset_us": 4344295,
+            "mesh_path": "000269_scandycore_raw_frame.drc",
+            "texture_path": "000269_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31993,
+            "initial_frame_offset_us": 4376288,
+            "mesh_path": "000270_scandycore_raw_frame.drc",
+            "texture_path": "000270_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33837,
+            "initial_frame_offset_us": 4410125,
+            "mesh_path": "000271_scandycore_raw_frame.drc",
+            "texture_path": "000271_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32147,
+            "initial_frame_offset_us": 4442272,
+            "mesh_path": "000272_scandycore_raw_frame.drc",
+            "texture_path": "000272_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34828,
+            "initial_frame_offset_us": 4477100,
+            "mesh_path": "000273_scandycore_raw_frame.drc",
+            "texture_path": "000273_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32108,
+            "initial_frame_offset_us": 4509208,
+            "mesh_path": "000274_scandycore_raw_frame.drc",
+            "texture_path": "000274_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35198,
+            "initial_frame_offset_us": 4544406,
+            "mesh_path": "000275_scandycore_raw_frame.drc",
+            "texture_path": "000275_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31328,
+            "initial_frame_offset_us": 4575734,
+            "mesh_path": "000276_scandycore_raw_frame.drc",
+            "texture_path": "000276_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 36143,
+            "initial_frame_offset_us": 4611877,
+            "mesh_path": "000277_scandycore_raw_frame.drc",
+            "texture_path": "000277_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 29536,
+            "initial_frame_offset_us": 4641413,
+            "mesh_path": "000278_scandycore_raw_frame.drc",
+            "texture_path": "000278_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 36553,
+            "initial_frame_offset_us": 4677966,
+            "mesh_path": "000279_scandycore_raw_frame.drc",
+            "texture_path": "000279_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32731,
+            "initial_frame_offset_us": 4710697,
+            "mesh_path": "000280_scandycore_raw_frame.drc",
+            "texture_path": "000280_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33871,
+            "initial_frame_offset_us": 4744568,
+            "mesh_path": "000281_scandycore_raw_frame.drc",
+            "texture_path": "000281_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31896,
+            "initial_frame_offset_us": 4776464,
+            "mesh_path": "000282_scandycore_raw_frame.drc",
+            "texture_path": "000282_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34016,
+            "initial_frame_offset_us": 4810480,
+            "mesh_path": "000283_scandycore_raw_frame.drc",
+            "texture_path": "000283_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33138,
+            "initial_frame_offset_us": 4843618,
+            "mesh_path": "000284_scandycore_raw_frame.drc",
+            "texture_path": "000284_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34937,
+            "initial_frame_offset_us": 4878555,
+            "mesh_path": "000285_scandycore_raw_frame.drc",
+            "texture_path": "000285_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31570,
+            "initial_frame_offset_us": 4910125,
+            "mesh_path": "000286_scandycore_raw_frame.drc",
+            "texture_path": "000286_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35082,
+            "initial_frame_offset_us": 4945207,
+            "mesh_path": "000287_scandycore_raw_frame.drc",
+            "texture_path": "000287_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31721,
+            "initial_frame_offset_us": 4976928,
+            "mesh_path": "000288_scandycore_raw_frame.drc",
+            "texture_path": "000288_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 34703,
+            "initial_frame_offset_us": 5011631,
+            "mesh_path": "000289_scandycore_raw_frame.drc",
+            "texture_path": "000289_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32465,
+            "initial_frame_offset_us": 5044096,
+            "mesh_path": "000290_scandycore_raw_frame.drc",
+            "texture_path": "000290_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32601,
+            "initial_frame_offset_us": 5076697,
+            "mesh_path": "000291_scandycore_raw_frame.drc",
+            "texture_path": "000291_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35506,
+            "initial_frame_offset_us": 5112203,
+            "mesh_path": "000292_scandycore_raw_frame.drc",
+            "texture_path": "000292_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 30876,
+            "initial_frame_offset_us": 5143079,
+            "mesh_path": "000293_scandycore_raw_frame.drc",
+            "texture_path": "000293_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 35808,
+            "initial_frame_offset_us": 5178887,
+            "mesh_path": "000294_scandycore_raw_frame.drc",
+            "texture_path": "000294_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 31918,
+            "initial_frame_offset_us": 5210805,
+            "mesh_path": "000295_scandycore_raw_frame.drc",
+            "texture_path": "000295_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 33228,
+            "initial_frame_offset_us": 5244033,
+            "mesh_path": "000296_scandycore_raw_frame.drc",
+            "texture_path": "000296_scandycore_raw_frame.jpg"
+        },
+        {
+            "delay_us": 32321,
+            "initial_frame_offset_us": 5276354,
+            "mesh_path": "000297_scandycore_raw_frame.drc",
+            "texture_path": "000297_scandycore_raw_frame.jpg"
+        }
+    ],
+    "is_streaming": false,
+    "preview_img": "scvv_preview.png",
+    "version": "0.1.0"
+}

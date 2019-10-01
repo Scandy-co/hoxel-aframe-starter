@@ -1,73 +1,64 @@
 <a-scene physics="gravity: 0" environment="preset: tron">
-  <a-assets>
-    <a-mixin
-      id="controller"
-      physics-collider
-      static-body="shape: sphere; sphereRadius: 0.02"
-      super-hands="colliderEvent: collisions;
-                            colliderEventProperty: els;
-                            colliderEndEvent: collisions;
-                            colliderEndEventProperty: clearedEls"
-      collision-filter="group: hands;
-                                   collidesWith: red, blue;
-                                   collisionForces: false"
-    >
-    </a-mixin>
-    <a-mixin
-      id="cube"
-      dynamic-body
-      grabbable
-      geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
-    >
-    </a-mixin>
-  </a-assets>
-  <!-- settings pulled in from controller mixin above -->
-  <a-entity hand-controls="left" mixin="controller"></a-entity>
-  <a-entity hand-controls="right" mixin="controller"></a-entity>
+  <a-light position="5 10 1" intensity="0.75"></a-light>
+  <a-light type="point" position="70 10 -90" intensity=".2"></a-light>
+
+  <require path="templates/assets.html"></require>
+  <require path="templates/mixins.html"></require>
+  <require path="templates/player.html"></require>
+
   <!-- can be picked up because it collides with the hands group and vice versa -->
   <a-entity
     id="redCube"
     mixin="cube"
-    position="0 1.6 -1"
+    position="-1.2 1.5 .5"
     material="color: red"
     sleepy
-    collision-filter="group: red; collidesWith: default, hands, blue, grey"
+    collision-filter="group: red; collidesWith: default, hands, grey"
   >
   </a-entity>
 
-  <a-entity>
-    <a-box
-      id="hoxelContainer1"
-      static-body
-      physics-collider
-      collision-detected
-      collision-filter="group: grey; collidesWith: red"
-      geometry="primitive: box; width: 0.5; height: 0.5; depth: 0.5"
-      position="1 1.3 0"
-      visible="true"
-      material="color: grey"
-    >
-    </a-box>
-    <a-entity
-      id="cole_1"
-      scvv="src: //d2a0b7lq85v0ro.cloudfront.net/cole-amazed"
-      scale="1 1 1"
-      rotation="-20 180 0"
-      position="1 1.3 .5"
-    >
+  <!-- WACK-A-MOLE TABLE -->
+  <a-entity position="0 0 -2">
+    <!-- Table Object -->
+    <a-entity wack-table scale=".75 .75 .75"></a-entity>
+
+    <!-- Front Row -->
+    <a-entity mixin="hole" position="-0.35 0.84 0.4"></a-entity>
+    <a-entity mixin="hole" position="0.35 0.84 0.4"></a-entity>
+    <!-- Hoxel Moles -->
+    <a-entity hydro-motion position="-0.35 0 0.4">
+      <a-entity id="hoxelContainer1" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
+    </a-entity>
+    <a-entity hydro-motion position="0.35 0.84 0.4">
+      <a-entity id="hoxelContainer1" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
+    </a-entity>
+
+    <!-- Back Row -->
+    <a-entity mixin="hole" position="-0.67 1.019 -0.32"></a-entity>
+    <a-entity mixin="hole" position="0 1.019 -0.32"></a-entity>
+    <a-entity mixin="hole" position="0.67 1.019 -0.32"></a-entity>
+    <!-- Hoxel Moles -->
+    <a-entity hydro-motion position="-0.67 1.019 -0.32">
+      <a-entity id="hoxelContainer1" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
+    </a-entity>
+    <a-entity hydro-motion position="0 1.019 -0.32">
+      <a-entity id="hoxelContainer1" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
+    </a-entity>
+    <a-entity hydro-motion position="0.67 1.019 -0.32">
+      <a-entity id="hoxelContainer1" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
     </a-entity>
   </a-entity>
-  <!-- even though the controller has blue in its collidesWith list,
-         since the blue cube doesn't also have hands in its list, you cannot
-         pick it up, but you can knock it around with the red cube -->
-  <a-entity
-    mixin="cube"
-    position="0 1 -1"
-    material="color: blue"
-    sleepy
-    collision-filter="group: blue; collidesWith: default, red"
-  >
-  </a-entity>
+
   <!-- floor entity. 'default' collision group so cubes will bounce off -->
   <a-box
     visible="false"
@@ -75,6 +66,6 @@
     depth="20"
     height="0.1"
     static-body
-    collision-filter="collidesWith: red, blue"
+    collision-filter="collidesWith: red"
   ></a-box>
 </a-scene>
