@@ -52,8 +52,6 @@ AFRAME.registerComponent("scvv", {
             HOXEL_URL,
             ...json
           };
-          console.log("got json", HOXEL_URL);
-          console.log(this.scvvJSON);
           this.getAudioBuffer();
           this.callHoxelWorkers();
         })

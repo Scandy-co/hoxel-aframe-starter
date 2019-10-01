@@ -15,13 +15,14 @@ AFRAME.registerComponent("hydro-motion", {
   tick: function() {
     var data = this.data;
 
-    if (!data.isMoving && Math.random() > 0.9) {
+    if (data.valueY > 0.18) {
+      this.el.setAttribute("ishittable", true);
+    } else {
+      this.el.removeAttribute("ishittable");
+    }
+
+    if (!data.isMoving && Math.random() > 0.995) {
       data.isMoving = true;
-      if (Math.random() > 0.75) {
-        this.el.setAttribute("visible", "true");
-      } else {
-        this.el.setAttribute("visible", "false");
-      }
     } else if (data.isMoving) {
       if (data.direction === "up") {
         data.valueY += 0.04;
