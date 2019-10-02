@@ -1,113 +1,132 @@
-<a-scene physics="gravity: 0" environment="preset: tron">
-  <a-light position="5 10 1" intensity="0.75"></a-light>
-  <a-light type="point" position="70 10 -90" intensity=".2"></a-light>
-
+<a-scene physics="gravity: 0" environment="preset: tron" loading-indicator>
   <require path="templates/assets.html"></require>
   <require path="templates/mixins.html"></require>
   <require path="templates/player.html"></require>
 
-  <!-- bat -->
-  <a-gltf-model
-    src="#bat"
-    mixin="grabbable"
-    sleepy
-    body="type: dynamic; mass: 1; shape: auto;"
-    position="-2 1 -.8"
-    rotation="-10 100 0"
-    scale="1 1 1"
-  ></a-gltf-model>
-
-  <!-- racket -->
-  <a-gltf-model
-    src="#racket"
-    sleepy
-    body="type: dynamic; mass: 4; shape: auto;"
-    mixin="grabbable"
-    position="2 1.2 -.8"
-    rotation="-20 100 0"
-    scale=".003 .003 .003"
-  ></a-gltf-model>
-
-  <!-- ScoreBoard -->
-  <a-entity position="0 1.8 -3">
+  <a-entity id="loadingIndicator" visible="true">
+    <a-torus
+      color="red"
+      arc="360"
+      radius=".8"
+      radius-tubular="0.05"
+      rotation="0 0 0"
+      position="0 2 -2"
+      animation="property: rotation; to: 360 360 ; dir: alternate; loop: true; dur: 10000"
+    ></a-torus>
     <a-entity
-      geometry="primitive: plane; width: 1; height: .4"
-      position="0.5 0 0"
-      material="color: white; opacity: .5"
-      bind="text.value: score"
-      text="align: center; width: 2.2"
-    >
-    </a-entity>
-    <a-entity
-      geometry="primitive: plane; width: 1; height: .4"
-      position="-0.5 0 0"
-      wrapCount="10"
-      material="color: white; opacity: .5"
-      text="value: Score; align: center; width: 2.2"
-    >
-    </a-entity>
+      position="0 2 -2"
+      text="color: white; align: center; width: 5; font: exo2semibold;
+          value: Loading..."
+    ></a-entity>
   </a-entity>
 
-  <!-- WACK-A-MOLE TABLE -->
-  <a-entity static-body position="0 0 -2">
-    <!-- Table Object -->
-    <a-entity wack-table scale=".75 .75 .75"></a-entity>
+  <a-entity id="gameScene" visible="false">
+    <a-light position="5 10 1" intensity="0.75"></a-light>
+    <a-light type="point" position="70 10 -90" intensity=".2"></a-light>
 
-    <!-- Front Row -->
-    <a-entity mixin="hole" position="-0.35 0.84 0.4"></a-entity>
-    <a-entity mixin="hole" position="0.35 0.84 0.4"></a-entity>
+    <!-- bat -->
+    <a-gltf-model
+      src="#bat"
+      mixin="grabbable"
+      sleepy
+      body="type: dynamic; mass: 1; shape: auto;"
+      position="-1.5 1 -.8"
+      rotation="-10 100 0"
+      scale="1 1 1"
+    ></a-gltf-model>
 
-    <!-- Hoxel Moles -->
-    <a-entity
-      hydro-motion
-      position="-0.35 0 0.4"
-      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
-    >
-      <a-entity id="hoxel1" mixin="hoxelContainer"></a-entity>
-      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+    <!-- racket -->
+    <a-gltf-model
+      src="#racket"
+      sleepy
+      body="type: dynamic; mass: 4; shape: auto;"
+      mixin="grabbable"
+      position="1.5 1.2 -.8"
+      rotation="-20 100 0"
+      scale=".003 .003 .003"
+    ></a-gltf-model>
+
+    <!-- ScoreBoard -->
+    <a-entity position="0 1.8 -3">
+      <a-entity
+        geometry="primitive: plane; width: 1; height: .4"
+        position="0.5 0 0"
+        material="color: white; opacity: .5"
+        bind="text.value: score"
+        text="align: center; width: 2.2"
+      >
       </a-entity>
-      <a-sound src="#punch" autoplay="true" position="-0.35 0 0.4"></a-sound>
-    </a-entity>
-    <a-entity
-      hydro-motion
-      position="0.35 0.84 0.4"
-      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
-    >
-      <a-entity id="hoxel2" mixin="hoxelContainer"></a-entity>
-      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      <a-entity
+        geometry="primitive: plane; width: 1; height: .4"
+        position="-0.5 0 0"
+        wrapCount="10"
+        material="color: white; opacity: .5"
+        text="value: Score; align: center; width: 2.2"
+      >
       </a-entity>
     </a-entity>
 
-    <!-- Back Row -->
-    <a-entity mixin="hole" position="-0.67 1.019 -0.32"></a-entity>
-    <a-entity mixin="hole" position="0 1.019 -0.32"></a-entity>
-    <a-entity mixin="hole" position="0.67 1.019 -0.32"></a-entity>
-    <!-- Hoxel Moles -->
-    <a-entity
-      hydro-motion
-      position="-0.67 1.019 -0.32"
-      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
-    >
-      <a-entity id="hoxel3" mixin="hoxelContainer"></a-entity>
-      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+    <!-- WACK-A-MOLE TABLE -->
+    <a-entity static-body position="0 0 -2">
+      <!-- Table Object -->
+      <a-entity wack-table scale=".75 .75 .75"></a-entity>
+
+      <!-- Front Row -->
+      <a-entity mixin="hole" position="-0.35 0.84 0.4"></a-entity>
+      <a-entity mixin="hole" position="0.35 0.84 0.4"></a-entity>
+
+      <!-- Hoxel Moles -->
+      <a-entity
+        hydro-motion
+        position="-0.35 0 0.4"
+        sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+      >
+        <a-entity id="hoxel1" mixin="hoxelContainer"></a-entity>
+        <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+        </a-entity>
+        <a-sound src="#punch" autoplay="true" position="-0.35 0 0.4"></a-sound>
       </a-entity>
-    </a-entity>
-    <a-entity
-      hydro-motion
-      position="0 1.019 -0.32"
-      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
-    >
-      <a-entity id="hoxel4" mixin="hoxelContainer"></a-entity>
-      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      <a-entity
+        hydro-motion
+        position="0.35 0.84 0.4"
+        sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+      >
+        <a-entity id="hoxel2" mixin="hoxelContainer"></a-entity>
+        <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+        </a-entity>
       </a-entity>
-    </a-entity>
-    <a-entity
-      hydro-motion
-      position="0.67 1.019 -0.32"
-      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
-    >
-      <a-entity id="hoxel5" mixin="hoxelContainer"></a-entity>
-      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+
+      <!-- Back Row -->
+      <a-entity mixin="hole" position="-0.67 1.019 -0.32"></a-entity>
+      <a-entity mixin="hole" position="0 1.019 -0.32"></a-entity>
+      <a-entity mixin="hole" position="0.67 1.019 -0.32"></a-entity>
+      <!-- Hoxel Moles -->
+      <a-entity
+        hydro-motion
+        position="-0.67 1.019 -0.32"
+        sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+      >
+        <a-entity id="hoxel3" mixin="hoxelContainer"></a-entity>
+        <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+        </a-entity>
+      </a-entity>
+      <a-entity
+        hydro-motion
+        position="0 1.019 -0.32"
+        sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+      >
+        <a-entity id="hoxel4" mixin="hoxelContainer"></a-entity>
+        <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+        </a-entity>
+      </a-entity>
+      <a-entity
+        hydro-motion
+        position="0.67 1.019 -0.32"
+        sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+      >
+        <a-entity id="hoxel5" mixin="hoxelContainer"></a-entity>
+        <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+        </a-entity>
       </a-entity>
     </a-entity>
   </a-entity>
