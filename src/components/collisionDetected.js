@@ -9,6 +9,8 @@ AFRAME.registerComponent("collision-detected", {
         if (el.parentEl.getAttribute("ishittable")) {
           console.log(`${collided} is being hit by ${collider} `);
           AFRAME.scenes[0].emit("increaseScore", { points: 1 });
+          el.dispatchEvent(new CustomEvent("collision"));
+          el.parentElement.dispatchEvent(new CustomEvent("collision"));
         }
       }
     });

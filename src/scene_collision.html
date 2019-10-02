@@ -6,16 +6,27 @@
   <require path="templates/mixins.html"></require>
   <require path="templates/player.html"></require>
 
-  <!-- can be picked up because it collides with the hands group and vice versa -->
-  <a-entity
-    id="redCube"
-    mixin="cube"
+  <!-- bat -->
+  <a-gltf-model
+    src="#bat"
+    mixin="grabbable"
     sleepy
-    position="-1.2 1.5 .5"
-    material="color: red"
-    collision-filter="group: red; collidesWith: default, hands, grey"
-  >
-  </a-entity>
+    body="type: dynamic; mass: 1; shape: auto;"
+    position="-2 1 -.8"
+    rotation="-10 100 0"
+    scale="1 1 1"
+  ></a-gltf-model>
+
+  <!-- racket -->
+  <a-gltf-model
+    src="#racket"
+    sleepy
+    body="type: dynamic; mass: 4; shape: auto;"
+    mixin="grabbable"
+    position="2 1.2 -.8"
+    rotation="-20 100 0"
+    scale=".003 .003 .003"
+  ></a-gltf-model>
 
   <!-- ScoreBoard -->
   <a-entity position="0 1.8 -3">
@@ -45,38 +56,60 @@
     <!-- Front Row -->
     <a-entity mixin="hole" position="-0.35 0.84 0.4"></a-entity>
     <a-entity mixin="hole" position="0.35 0.84 0.4"></a-entity>
+
     <!-- Hoxel Moles -->
-    <a-entity hydro-motion position="-0.35 0 0.4">
+    <a-entity
+      hydro-motion
+      position="-0.35 0 0.4"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
       <a-entity id="hoxel1" mixin="hoxelContainer"></a-entity>
       <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
       </a-entity>
+      <a-sound src="#punch" autoplay="true" position="-0.35 0 0.4"></a-sound>
     </a-entity>
-    <!-- <a-entity hydro-motion position="0.35 0.84 0.4">
+    <a-entity
+      hydro-motion
+      position="0.35 0.84 0.4"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
       <a-entity id="hoxel2" mixin="hoxelContainer"></a-entity>
       <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
       </a-entity>
-    </a-entity> -->
+    </a-entity>
 
     <!-- Back Row -->
     <a-entity mixin="hole" position="-0.67 1.019 -0.32"></a-entity>
     <a-entity mixin="hole" position="0 1.019 -0.32"></a-entity>
     <a-entity mixin="hole" position="0.67 1.019 -0.32"></a-entity>
     <!-- Hoxel Moles -->
-    <!-- <a-entity hydro-motion position="-0.67 1.019 -0.32">
+    <a-entity
+      hydro-motion
+      position="-0.67 1.019 -0.32"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
       <a-entity id="hoxel3" mixin="hoxelContainer"></a-entity>
       <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
       </a-entity>
     </a-entity>
-    <a-entity hydro-motion position="0 1.019 -0.32">
+    <a-entity
+      hydro-motion
+      position="0 1.019 -0.32"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
       <a-entity id="hoxel4" mixin="hoxelContainer"></a-entity>
       <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
       </a-entity>
     </a-entity>
-    <a-entity hydro-motion position="0.67 1.019 -0.32">
+    <a-entity
+      hydro-motion
+      position="0.67 1.019 -0.32"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
       <a-entity id="hoxel5" mixin="hoxelContainer"></a-entity>
       <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
       </a-entity>
-    </a-entity> -->
+    </a-entity>
   </a-entity>
 
   <!-- floor entity. 'default' collision group so cubes will bounce off -->

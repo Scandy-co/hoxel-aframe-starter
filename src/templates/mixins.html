@@ -11,10 +11,10 @@
   >
   </a-mixin>
   <a-mixin
-    id="cube"
+    id="grabbable"
     dynamic-body
     grabbable
-    geometry="primitive: box; width: 0.05; height: 0.05; depth: 1"
+    collision-filter="group: red; collidesWith: default, hands, grey"
   >
   </a-mixin>
   <a-mixin
@@ -32,6 +32,7 @@
     geometry="primitive: cylinder; radius: .3; depth: 0.5"
     visible="false"
     material="color: grey"
+    sound="src: url(/assets/audio/punch.wav); on: collision; volume: 2"
   ></a-mixin>
   <a-mixin
     id="hoxel"
