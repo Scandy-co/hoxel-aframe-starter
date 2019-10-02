@@ -1,134 +1,124 @@
-<a-scene
-  physics="debug: true"
-  environment="preset: forest; groundColor: #5c1a04; groundColor2: #5c1a04; seed: 20;"
->
+<a-scene physics="gravity: 0" environment="preset: tron">
+  <a-light position="5 10 1" intensity="0.75"></a-light>
+  <a-light type="point" position="70 10 -90" intensity=".2"></a-light>
+
   <require path="templates/assets.html"></require>
   <require path="templates/mixins.html"></require>
   <require path="templates/player.html"></require>
 
-  <!-- <a-sky id="panorama" radius="50" src="#background"></a-sky> -->
-  <!-- <a-entity sound="src: #room"></a-entity> -->
-  <a-entity
-    scale="3 3 3"
-    position="0 0 0"
-    gltf-model="#lowpolyscene"
-  ></a-entity>
-  <!-- <a-sound
-    src="src: url(/assets/audio/room_tone.wav)"
-    autoplay="true"
-    loop="true"
-    positional="false"
-  ></a-sound> -->
+  <!-- bat -->
+  <a-gltf-model
+    src="#bat"
+    mixin="grabbable"
+    sleepy
+    body="type: dynamic; mass: 1; shape: auto;"
+    position="-2 1 -.8"
+    rotation="-10 100 0"
+    scale="1 1 1"
+  ></a-gltf-model>
 
-  <!-- Sphere. -->
-  <a-entity
-    geometry="primitive: sphere; radius: 1.25"
-    material="color: #EF2D5E"
-    position="2 1.25 -6"
-    shadow
-  ></a-entity>
+  <!-- racket -->
+  <a-gltf-model
+    src="#racket"
+    sleepy
+    body="type: dynamic; mass: 4; shape: auto;"
+    mixin="grabbable"
+    position="2 1.2 -.8"
+    rotation="-20 100 0"
+    scale=".003 .003 .003"
+  ></a-gltf-model>
 
-  <!-- Hoxel -->
-  <!-- <a-entity
-    dynamic-body="shape: cylinder; cylinderAxis: y; mass: 500"
-    hoverable
-    grabbable
-    stretchable
-    draggable
-    event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true"
-    event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false"
-    id="my-file"
-    scvv="src: //d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/scvv_0-1-0_test_005"
-    scale="5 5 5"
-    rotation="0 180 0"
-    position="-1.2 2.1 -0.55"
-  >
-  </a-entity> -->
-
-  <a-entity
-    id="george"
-    scvv="src: //d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/spooked-george"
-    scale="3 3 3"
-    rotation="0 180 -90"
-    position="-0.641 2.508 -0.043"
-  >
+  <!-- ScoreBoard -->
+  <a-entity position="0 1.8 -3">
+    <a-entity
+      geometry="primitive: plane; width: 1; height: .4"
+      position="0.5 0 0"
+      material="color: white; opacity: .5"
+      bind="text.value: score"
+      text="align: center; width: 2.2"
+    >
+    </a-entity>
+    <a-entity
+      geometry="primitive: plane; width: 1; height: .4"
+      position="-0.5 0 0"
+      wrapCount="10"
+      material="color: white; opacity: .5"
+      text="value: Score; align: center; width: 2.2"
+    >
+    </a-entity>
   </a-entity>
-  <!-- <a-entity
-    id="cole2"
-    geometry="primitive: plane"
-    material="color: blue"
-    scvv="src: //d2a0b7lq85v0ro.cloudfront.net/shrimp_boots/scvv_0-1-0_test_003"
-    rotation="0 180 0"
-    scale="3 3 3"
-    position="1 1.9 -0.7"
-  ></a-entity> -->
 
-  <a-entity
-    dynamic-body="shape: box; mass: 100"
-    animation-mixer=""
-    id="troll"
-    gltf-model="#troll"
-    scale="0.03 0.03 0.03"
-    position="-7.28401 0.09011 -0.96149"
-    rotation="0 45 0"
-  >
+  <!-- WACK-A-MOLE TABLE -->
+  <a-entity static-body position="0 0 -2">
+    <!-- Table Object -->
+    <a-entity wack-table scale=".75 .75 .75"></a-entity>
+
+    <!-- Front Row -->
+    <a-entity mixin="hole" position="-0.35 0.84 0.4"></a-entity>
+    <a-entity mixin="hole" position="0.35 0.84 0.4"></a-entity>
+
+    <!-- Hoxel Moles -->
+    <a-entity
+      hydro-motion
+      position="-0.35 0 0.4"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
+      <a-entity id="hoxel1" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
+      <a-sound src="#punch" autoplay="true" position="-0.35 0 0.4"></a-sound>
+    </a-entity>
+    <a-entity
+      hydro-motion
+      position="0.35 0.84 0.4"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
+      <a-entity id="hoxel2" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
+    </a-entity>
+
+    <!-- Back Row -->
+    <a-entity mixin="hole" position="-0.67 1.019 -0.32"></a-entity>
+    <a-entity mixin="hole" position="0 1.019 -0.32"></a-entity>
+    <a-entity mixin="hole" position="0.67 1.019 -0.32"></a-entity>
+    <!-- Hoxel Moles -->
+    <a-entity
+      hydro-motion
+      position="-0.67 1.019 -0.32"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
+      <a-entity id="hoxel3" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
+    </a-entity>
+    <a-entity
+      hydro-motion
+      position="0 1.019 -0.32"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
+      <a-entity id="hoxel4" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
+    </a-entity>
+    <a-entity
+      hydro-motion
+      position="0.67 1.019 -0.32"
+      sound="src: url(/assets/audio/ouch.wav); on: collision; volume: 3"
+    >
+      <a-entity id="hoxel5" mixin="hoxelContainer"></a-entity>
+      <a-entity scvv="src: ../assets/hoxels/neilson_01" mixin="hoxel">
+      </a-entity>
+    </a-entity>
   </a-entity>
-  <!-- <a-light color="red" position="-1 1 0"></a-light> -->
 
-  <!-- Box -->
-  <!-- <a-entity
-    geometry="primitive: box"
-    material="color: #3d3d3d"
-    position="0 0.75 -0.5"
-    rotation=""
-    static-body
-    shadow
-    scale="3 0.2 2"
-  ></a-entity> -->
-
-  <!-- Cylinder. -->
-  <!-- <a-entity
-    geometry="primitive: cylinder; radius: 0.5; height: 1.2"
-    material="color: #999999"
-    position="0 0.21003 -0.5"
-    static-body
-    shadow=""
-    scale="1 0.5 1"
-  ></a-entity> -->
-
-  <!-- Polaroid -->
-  <!-- <a-entity
-    dynamic-body
-    hoverable
-    grabbable
-    draggable
-    modify-materials
-    obj-model="obj: #polaroid-obj; mtl: #polaroid-mtl"
-    rotation="0 35"
-    scale="0.2 0.2 0.2"
-    position="-0.2 1.6 -0.480"
-  ></a-entity>
-  -->
-  <!-- Polaroid -->
-  <!-- <a-entity
-    dynamic-body
-    hoverable
-    grabbable
-    draggable
-    modify-materials
-    obj-model="obj: #polaroid-obj; mtl: #polaroid-mtl"
-    rotation="0 30"
-    scale="0.2 0.2 0.2"
-    position="-0.7 1.344 -2.480"
-  ></a-entity> -->
-
-  <!-- ground collider keeps objects from falling -->
+  <!-- floor entity. 'default' collision group so cubes will bounce off -->
   <a-box
-    static-body
-    width="100"
-    height="0.001"
-    depth="100"
     visible="false"
+    width="20"
+    depth="20"
+    height="0.1"
+    static-body
+    collision-filter="collidesWith: red"
   ></a-box>
-  <a-entity id="container"></a-entity>
 </a-scene>

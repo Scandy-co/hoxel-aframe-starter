@@ -17,7 +17,7 @@ function requireAll(req) {
 requireAll(require.context("./components/", true, /\.js$/));
 
 require("./firebase");
-require("./scene_collision.html");
+require("./scene.html");
 
 window.addEventListener("load", function() {
   console.log("All assets are loaded");
