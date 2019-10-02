@@ -26,6 +26,7 @@ AFRAME.registerComponent("scvv", {
 
   init() {
     this.listener = null;
+    this.readyToPlay = false;
 
     this.setupBuffers();
     this.setupMesh();
@@ -52,6 +53,7 @@ AFRAME.registerComponent("scvv", {
             HOXEL_URL,
             ...json
           };
+          console.log("got json", HOXEL_URL);
           this.getAudioBuffer();
           this.callHoxelWorkers();
         })
@@ -82,7 +84,7 @@ AFRAME.registerComponent("scvv", {
     this.seenFrames = [];
     this.numWorkers = 2;
     this.maxBufferedCount = 500;
-    this.isPlaying = false;
+    this.readyToPlay = false;
     this.frameIdx = 0;
     this.deltas = 0;
     this.vv_frame_ms = 0;
@@ -93,6 +95,9 @@ AFRAME.registerComponent("scvv", {
 
   setupMesh() {
     var el = this.el;
+
+    this.el.removeAttribute("body");
+    this.el.removeAttribute("shape__handle");
 
     this.scandyToThreeMat = new THREE.Matrix4();
 
@@ -111,8 +116,13 @@ AFRAME.registerComponent("scvv", {
       // transparent: true,
       side: THREE.DoubleSide
     });
-    let geometry = new THREE.BoxGeometry(0.3, 0.3, 0.3);
-    this.mesh = new THREE.Mesh(geometry, this.material);
+    this.loadingMaterial = new THREE.MeshPhongMaterial({
+      color: 0x00ff00,
+      opacity: 0.92,
+      transparent: true
+    });
+    let geometry = new THREE.ConeGeometry(0.3, 0.3, 30);
+    this.mesh = new THREE.Mesh(geometry, this.loadingMaterial);
 
     this.group = new THREE.Group();
     this.group.add(this.mesh);
@@ -242,9 +252,36 @@ AFRAME.registerComponent("scvv", {
    * Starts playing back the scvv if its not already
    */
   startPlayback() {
-    if (!this.isPlaying) {
-      this.isPlaying = true;
-      console.log("startPlayback()", this.scvvJSON.HOXEL_URL);
+    if (!this.readyToPlay) {
+      // console.log('startPlayback()', this.scvvJSON.HOXEL_URL)
+      const { el } = this;
+      this.readyToPlay = true;
+
+      // increases counter of state variable hoxelsLoaded for loading indicator
+      AFRAME.scenes[0].emit("increaseHoxelsLoaded", { count: 1 });
+
+      // el.setAttribute(
+      //   "body",
+      //   "type: dynamic; mass: 10; shape: none; angularDamping: 0.3;"
+      // );
+      // el.setAttribute(
+      //   "shape__handle",
+      //   `
+      // shape: box;
+      // halfExtents: 0.6 0.001 0.6;
+      // offset: 0 -0.5 0.3;
+      // `
+      // );
+      // el.setAttribute(
+      //   "shape__main",
+      //   `
+      // shape: cylinder;
+      // radiusBottom: 0.1;
+      // height: 0.8;
+      // radiusTop: 0.4;
+      // numSegments: 4;
+      // offset: 0.0 0.0 0.6;`
+      // );
     }
   },
 
@@ -314,6 +351,7 @@ AFRAME.registerComponent("scvv", {
       this.scvvTextureImage.src = frame.texture_blob;
       this.mesh.geometry = frame.mesh_geometry;
       if (!this.mesh.material.map) {
+        this.mesh.material = this.material;
         this.mesh.material.map = this.scvvTexture;
         this.mesh.material.needsUpdate = true;
         this.scvvTexture.needsUpdate = true;
@@ -329,7 +367,7 @@ AFRAME.registerComponent("scvv", {
   tick(time, timeDelta) {
     this.deltas += timeDelta;
     if (
-      this.isPlaying &&
+      this.readyToPlay &&
       !!this.bufferedFrames &&
       this.bufferedFrames.length > 0
     ) {
