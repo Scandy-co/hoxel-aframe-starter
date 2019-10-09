@@ -1,5 +1,5 @@
 // turn controller's physics presence on only while button held down
-AFRAME.registerComponent("wack-table", {
+AFRAME.registerComponent("table", {
   init: function() {
     var geometry = new THREE.Geometry();
     geometry.vertices.push(

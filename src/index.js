@@ -1,12 +1,8 @@
 // AFRAME first!
 require("aframe");
-
-require("aframe-event-set-component");
-require("aframe-particle-system-component");
 require("aframe-physics-system");
 require("aframe-physics-extras");
 require("super-hands");
-require("aframe-extras");
 require("aframe-state-component");
 
 function requireAll(req) {

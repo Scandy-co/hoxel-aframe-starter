@@ -1,4 +1,4 @@
-AFRAME.registerComponent("hydro-motion", {
+AFRAME.registerComponent("move-up-down", {
   schema: {
     isMoving: { default: false },
     direction: { default: "up" },
