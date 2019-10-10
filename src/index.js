@@ -12,7 +12,7 @@ function requireAll(req) {
 // Require all components.
 requireAll(require.context("./components/", true, /\.js$/));
 
-require("./firebase");
+// Bring in the scene.  Modify this file or create a new html file and link here.
 require("./scene.html");
 
 window.addEventListener("load", function() {
