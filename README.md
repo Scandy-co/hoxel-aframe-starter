@@ -1,36 +1,31 @@
-# hoxel-aframe
+# Intro
 
-AFrame project to view hoxel in WebXR
+A starter project for creating awesome hoxel-filled VR scenes using just HTML and Javascript!
+
+Check out a live demo [here](http://whack-a-hoxel.surge.sh/) (especially on a headset) and read more about getting started on our blog post.
 
 ## Setup
 
 ```
-git clone https://github.com/Scandy-co/hoxel-aframe.git
+git clone https://github.com/Scandy-co/hoxel-aframe-starter.git
 cd hoxel-aframe
 yarn
 yarn start
 ```
 
-Now you should be running!
+Now you should be running! Open your browser to `localhost:3000` to view the experience. Once open, press `ctrl + option + i` to open the A-Frame inspector.
 
-Open your browser to 0.0.0.0:3000 to view the experience.
+## Usage
 
-Once open, press `ctrl + option + i` to open the AFrame inspector. This allows you to move any objects arounc the scene.
+By default, a game that we have built using A-Frame called "Whack-a-Hoxel" is loaded via WebVR into the browser. The hoxels are introduced via what is known as a `component` in A-Frame land. Contained in this repo is a component called `scvv`. Simply pass this component either a local path or a url to your hoxel directory and that's it. Check it out:
 
+```html
+<a-scene environment="preset: tron">
+  <a-entity
+    position="0 2 -2"
+    scvv="src: ../assets/hoxels/neilson_01"
+  ></a-entity>
+</a-scene>
+```
 
-<hr>
-
-
-dir structure
-
-- src (all the client side code)
- 	- `scene.html` (the main aframe scene)
-		- This is main the playground to create content in.
-	- `index.js` (entry to all client code)
-		- Requires lots of stuff and connects and sets things up
-	- templates (this is where view markup is)
-		- `mixins.html`
-			- cluttered code being attached to different components
-			- will have things like 6 DOF controller managers
-		- `player.html`
-			- this represents the player (person, living human) who is playing with the hoxel
+For more information on A-Frame and how to build your own VR experiences, we encourage you to peruse the docs and check out our blog post. To get started on your own scene, simply build off of our default `scene.html` or start a new `html` from scratch and update `./src/index.js`.
