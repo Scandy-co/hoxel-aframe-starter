@@ -2,7 +2,7 @@
 
 A starter project for creating awesome hoxel-filled VR scenes using just HTML and Javascript!
 
-Check out a live demo [here](http://whack-a-hoxel.surge.sh/) (especially on a headset) and read more about getting started on our blog post.
+Check out a live demo [here](http://whack-a-hoxel.surge.sh/) (especially on a headset) and read more about getting started on our [blog post](https://www.scandy.co/blog/building-a-whack-a-mole-game-in-vr-using-hoxel-and-a-frame).
 
 ## Setup
 
