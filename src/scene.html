@@ -6,10 +6,20 @@
   <!-- loading indciator for server requests and processing of each Hoxel -->
   <a-entity id="loadingIndicator" visible="true">
     <a-torus
+      id="loadingIndicatorTorus"
       color="red"
-      arc="360"
+      arc=".1"
       radius=".8"
       radius-tubular="0.05"
+      rotation="0 0 0"
+      position="0 2 -2"
+      animation="property: rotation; to: 360 360 ; dir: alternate; loop: true; dur: 10000"
+    ></a-torus>
+    <a-torus
+      color="gray"
+      arc="360"
+      radius=".8"
+      radius-tubular="0.04"
       rotation="0 0 0"
       position="0 2 -2"
       animation="property: rotation; to: 360 360 ; dir: alternate; loop: true; dur: 10000"

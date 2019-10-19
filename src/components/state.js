@@ -15,6 +15,10 @@ AFRAME.registerState({
 
     increaseHoxelsLoaded: function(state, action) {
       state.hoxelsLoaded += action.count;
+      let hoxelsLoadedPercent = state.hoxelsLoaded / 5;
+      document
+        .querySelector("#loadingIndicatorTorus")
+        .setAttribute("arc", hoxelsLoadedPercent * 360);
       if (state.hoxelsLoaded === 5) {
         document
           .querySelector("#loadingIndicator")
